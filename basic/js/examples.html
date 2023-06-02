@@ -258,7 +258,7 @@ display: none;
 
 
 
-<style>
+<!-- <style>
     body {
     height: 2000px;
     }
@@ -364,7 +364,211 @@ display: none;
     nav.classList.add("hidden");
     }
     })
+</script> -->
+
+<!-- 내 답
+<style>
+    body {
+        height: 2000px;
+    }
+
+    #container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 3rem;
+        width: 100%;
+    }
+
+    .container2 {
+        background-color: white;
+    }
+
+    /* #btn.invisible {
+        visibility: hidden;
+    } */
+
+    #nav {
+        margin: auto;
+        width: 10rem;
+        align-items: center;
+        font-weight: 600;
+       margin-top: 0.5rem;
+    }
+
+    .box {
+        width: 100%;
+        height: 25rem;
+        background: linear-gradient(to right, skyblue, blue);
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+</style>
+
+
+<header>
+    <div id="container">
+        <nav id="nav">Transparent NavBar</nav>
+    </div>
+</header>
+
+<div class="box"></div>
+
+<script>
+    var container = document.getElementById("container")
+
+    window.addEventListener("scroll", function () {
+        var scrollTop = document.documentElement.scrollTop;
+        console.log(scrollTop);
+
+        if (scrollTop > 100) {
+            container.classList.remove("container2");
+        } else {
+            container.classList.add("container2");
+        }
+    })
+
+</script> -->
+
+
+
+
+<!-- <style>
+    body {
+        height: 1000px;
+        margin: 0;
+    }
+
+    header {
+        /* position */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+
+        /* display */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: transparent;
+
+        transition: background-color 0.5s;
+    }
+
+    .bg-image {
+        background-image: linear-gradient(to right, skyblue, blue);
+        height: 400px;
+    }
+
+    .active {
+        background-color: #fff;
+    }
+</style>
+
+<header id="header">
+    Transparent NavBar
+</header>
+
+<div class="bg-image"></div>
+
+<script>
+    var header = document.getElementById("header");
+    
+    window.addEventListener("scroll", function () {
+    // 문서탑과 뷰포트 탑 사이의 거리
+    var scrollTop = document.documentElement.scrollTop;
+    
+    console.log(scrollTop);
+    
+    if (scrollTop > 50) {
+    header.classList.add("active");
+    } else {
+    header.classList.remove("active");
+    }
+    })
+</script> -->
+
+
+
+<style>
+    #btn {
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    }
+
+    #side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 16rem;
+    background-color: #fff;
+    transition: 0.2s;
+    }
+
+    #side-bar h1 {
+    text-align: center;
+    }
+
+    #overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0 0 0 / 0.2);
+    }
+
+    #side-bar.hidden {
+    left: -16rem;
+
+    #overlay.hidden {
+    display: none;
+    }
+
+</style>
+
+
+
+<button id="btn">&#9776;</button>
+
+<nav id="side-bar" class="hidden">
+    <h1>Logo</h1>
+    <ul>
+        <li>Menu</li>
+        <li>Menu</li>
+        <li>Menu</li>
+    </ul>
+</nav>
+
+<div id="overlay" class="hidden"></div>
+
+<main>
+    <h1>Side Bar</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, provident? Minus nihil, culpa laboriosam alias tenetur molestias. Nisi eum illum debitis? Velit quaerat fuga, quis sunt soluta officia ut iure.</p>
+</main>
+
+<script>
+    var btn=document.getElementById("btn");
+    var sideBar=document.getElementById("side-bar");
+    var overlay=document.getElementById("overlay");
+
+    // 메뉴버튼을 클릭했을 때
+    btn.addEventListener("click", function() {
+    sideBar.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    })
 </script>
+
+
+
+
+
 
 
 
