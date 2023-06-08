@@ -1,587 +1,970 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript 예제</title>
+    <title>JavaScript 예제</title>
 </head>
-<body>
-    
-<!-- <h1>좋아요 버튼</h1>
 
-<style>
+<body>
+
+    <!-- <style>
     #btn {
-        width: 2rem;
-        cursor: pointer;
-        fill: #ddd;
+      width: 2rem;
+      cursor: pointer;
+      fill: #ddd;
     }
 
     #btn.active {
-        fill: #05f
+      fill: #05f;
     }
-</style>
+  </style>
 
-<svg xmlns="http://www.w3.org/2000/svg" id="btn" viewBox="0 0 512 512">
-    <path
-        d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z" />
-</svg>
+  <h1>좋아요 버튼</h1>
 
-<script>
+  <svg 
+    id="btn"
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 512 512"
+  >
+    <path d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"/>
+  </svg>
+
+  <script>
     var btn = document.getElementById("btn");
 
     btn.addEventListener("click", function () {
-        // 클래스가(): 클래스가 있으면 제거하고 없으면 추가한다
-        btn.classList.toggle("active");
+      //  toggle(): 클래스가 있으면 제거하고 없으면 추가한다
+      btn.classList.toggle("active");
     })
-</script> -->
+  </script> -->
 
+    <!-- <style>
+      #container {
+        position: relative;
+        display: inline-block;
+      }
 
+      #input {
+        padding: 0.5rem;
+        width: 16rem;
+      }
 
+      #btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        padding: 0 1rem;
+        font-weight: 600;
+      }
+  </style>
 
-<!-- <h1>Q. Password toggle</h1>  -->
+  <h1>password toggle</h1>
 
-<!-- 내 답
-<style>
-    #hide_btn {
-    display: none;
-    }
-
-    #input.type {
-     
-    }
-</style>
-
-
-<input
-type="password"
-id="input"
-name="q"
-style="padding:0.5rem; border:1px solid #ddd; width: 16rem;"
-autocomplete="off" 
-value="123"
->
-
-<button id="btn">Show</button>
-
-
-
-<script>
-    var input=document.getElementById("input");
-    var btn=document.getElementById("btn")
-
-    btn.addEventListener("click", function () {
-    input.type="text"
-
-    if (input.type="text";) {
-    btnElement.value="Hide"
-    }
-    })
-
-    btn.addEventListener(input.type="text", function () {
-        btn.value="Hide";
-    })
-
-
-
-    // 인풋 타입이 텍스트일 경우
-    // 버튼 텍스트를  hide로 바꾼다
-
-</script> -->
-
-<!-- 
-쌤 답
-
-<style>
-#container {
-position: relative;
-display: inline-block;
-}
-
-#input {
-padding: 0.5rem;
-width: 16rem;
-}
-
-#btn {
-position: absolute;
-top: 0;
-right: 0;
-height: 100%;
-background-color: transparent;
-border: none;
-padding: 0 1rem; 
-font-weight: 600;
-}
-</style>
-
-
-<h1>password toggle</h1>
-
-<div id="container">
-    <input id="input" type="passowrd" value="123">
+  <div id="container">
+    <input id="input" type="password" value="123">
     <button id="btn">Show</button>
-</div>
+  </div>
 
-<script>
-    var input=document.getElementById("input");
-    var btn=document.getElementById("btn");
+  <script>
+    var input = document.getElementById("input");
+    var btn = document.getElementById("btn");
 
     btn.addEventListener("click", function () {
-    console.log(input.type); // password
+      console.log(input.type); // password
 
-    if (input.type === "text") {
-    input.type="password"
-    btn.textContent="Show"
-    } else {
-    input.type="text"
-    btn.textContent="Hide"}
+      if (input.type === "text") {
+        input.type = "password"
+        btn.textContent = "Show";
+      } else {
+        input.type = "text"
+        btn.textContent = "Hide";
+      }
     })
+  </script> -->
 
+    <!-- <style>
+    #container {
+      display: inline;
+    }
 
-</script> -->
+    #btn {
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      color: #888;
+      padding: 0;
+    }
 
+    #btn.hidden {
+      display: none;
+    }
+  </style>
 
- 
-<!-- <style>
-#container {
-display: inline;
-}
+  <h1>더보기 버튼</h1>
 
-#btn {
-border: none;
-cursor: pointer;
-background-color: transparent;
-color: #888;
-padding: 0;
-}
+  <p id="container">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Itaque ut odit commodi officiis fugiat praesentium, 
+    eum aut tenetur porro sint voluptate repellendus ab laudantium dolor, 
+    quasi id ea obcaecati eaque?
+  </p>
+  
+  <button id="btn">more</button>
 
-#btn.hidden {
-display: none;
-}
-
-</style>
-
-<h1>더보기 버튼</h1>
-
-<p id="container">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos officia necessitatibus, repellendus blanditiis, vitae incidunt, rerum magnam aspernatur dicta eos sequi. Sed expedita aut fugiat eum laboriosam repudiandae, distinctio consequatur?
-</p>
-
-<button id="btn">more</button>
-
-<script>
-    var container=document.getElementById("container");
-    var btn=document.getElementById("btn");
-    // 컨테이너 안에 있는 텍스트 전체
-    var fullContent=container.textContent;
-    // substring(startIndex, endIndex): 문자열에서 특정 구간의 문자를 추출한다  
-    // 0부터 50번째 문자까지만 보인다는 뜻
-    var lessContent=fullContent.substring(0,50)+"...";
+  <script>
+    var container = document.getElementById("container");
+    var btn = document.getElementById("btn");
+    var fullContent = container.textContent;
+    // substring(startIndex, endIndex): 문자열에서 특정 구간의 문자를 추출한다
+    var lessContent = fullContent.substring(0, 50) + "...";
 
     console.log(fullContent)
     console.log(lessContent)
 
     // 페이지가 처음 로드되었을 때
-    container.textContent=lessContent;
+    container.textContent = lessContent;
 
     // 더보기 버튼을 클릭했을 때
     btn.addEventListener("click", function () {
-    container.textContent=fullContent;
-    btn.classList.add("hidden");
+      container.textContent = fullContent;
+      btn.classList.add("hidden");
     })
-</script> -->
 
+  </script> -->
 
-
-
-<!-- <style>
+    <!-- <style>
     html {
-        /* 부드럽게 스크롤된다 */
-        scroll-behavior: smooth;
+      /* 부드럽게 스크롤된다 */
+      scroll-behavior: smooth;
     }
 
     body {
-        height: 2000px;
+      height: 2000px;
     }
 
     #btn {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 2rem;
-        cursor: pointer;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 2rem;
+      cursor: pointer;
     }
 
     #btn.invisible {
-        visibility: hidden;
+      visibility: hidden;
     }
-</style>
+  </style>
 
-<h1>탑버튼</h1>
+  <h1>탑버튼</h1>
+  <p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+    Molestias, officia eaque. Magni quos minima explicabo magnam laudantium 
+    alias ipsum provident, corrupti culpa voluptas incidunt in, 
+    dolore aliquam et accusantium suscipit.
+  </p>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum magni deserunt assumenda dolores corporis inventore
-    possimus! Odit magnam consequatur ipsam optio libero cupiditate, veritatis porro architecto nihil illum nostrum
-    error.
-</p>
+  <svg 
+    id="btn"
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 512 512"
+    class="invisible"
+  >
+    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM385 231c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-71-71V376c0 13.3-10.7 24-24 24s-24-10.7-24-24V193.9l-71 71c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 119c9.4-9.4 24.6-9.4 33.9 0L385 231z"/>
+  </svg>
 
-<svg id="btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="invisible">
-    <path
-        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM385 231c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-71-71V376c0 13.3-10.7 24-24 24s-24-10.7-24-24V193.9l-71 71c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9L239 119c9.4-9.4 24.6-9.4 33.9 0L385 231z" />
-</svg>
-
-<script>
+  <script>
     var btn = document.getElementById("btn");
-    // scrolltop: 문서 탑과 뷰포트 탑 사이의 거리
+
     window.addEventListener("scroll", function () {
-        var scrollTop = document.documentElement.scrollTop;
+      // 문서 탑과 뷰포트 탑 사이의 거리
+      var scrollTop = document.documentElement.scrollTop;
 
-        console.log(scrollTop);
+      console.log(scrollTop);
 
-        if (scrollTop > 200) {
-            // 탑버튼을 나타나게 한다
-            btn.classList.remove("invisible");
-        } else {
-            // 탑버튼을 사라지게 한다
-            btn.classList.add("invisible");
-        }
+      if (scrollTop > 200) {
+        // 탑버튼을 나타나게 한다
+        btn.classList.remove("invisible")
+      } else {
+        // 탑버튼을 사라지게 한다
+        btn.classList.add("invisible")
+      }
     })
 
     // 탑버튼을 클릭했을 때
     btn.addEventListener("click", function () {
-        document.documentElement.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     })
-</script> -->
+  </script> -->
 
-
-
-
-
-<!-- <style>
+    <!-- <style>
     body {
-    height: 2000px;
+      height: 2000px;
     }
 
     header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    backdrop-filter: blur(8px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(8px);
     }
 
     .header-inner {
-    border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
     }
 
     #btn {
-    border: none;
-    background-color: transparent;
-    font-size: 2rem;
-    cursor: pointer;
+      border: none;
+      background-color: transparent;
+      font-size: 2rem;
+      cursor: pointer;
     }
 
     nav {
-    border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
     }
 
     nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     nav a {
-    display: block;
-    text-align: center;
-    padding: 0.5rem;
-    text-decoration: none;
-    color: #000;
-    opacity: 0.5;
+      display: block;
+      text-align: center;
+      padding: 0.5rem;
+      text-decoration: none;
+      color: #000;
+      opacity: 0.5;
     }
 
     nav a:hover {
-    opacity: 1;
+      opacity: 1;
     }
 
     main {
-    margin-top: 4rem;
+      margin-top: 4rem;
     }
 
     .hidden {
-    display: none;
+      display: none;
     }
-</style>
+  </style>
 
-<h1>NavBar</h1>
 
-<header>
+  <header>
     <div class="header-inner">
-        <button id="btn">&#9776;</button>
+      <button id="btn">&#9776;</button>
     </div>
     <nav class="hidden" id="nav">
-        <ul>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-            <li>
-                <a href="#">Link</a>
-            </li>
-        </ul>
+      <ul>
+        <li>
+          <a href="#">Link</a>
+        </li>
+        <li>
+          <a href="#">Link</a>
+        </li>
+        <li>
+          <a href="#">Link</a>
+        </li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<main>
+  <main>
     <h1>Top navigation</h1>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente laboriosam commodi aut eius sed tempore voluptatem corrupti porro provident. Voluptatum sunt consectetur ratione asperiores velit alias. Laboriosam consectetur vero perferendis.
-    </p>
-</main>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, explicabo iure ipsum rerum corrupti rem maiores
+      doloremque porro deserunt illum non sequi! Veritatis perspiciatis vitae enim error. In, magnam officia?</p>
+  </main>
 
-<script>
-    var btn=document.getElementById("btn");
-    var nav=document.getElementById("nav");
+  <script>
+    var btn = document.getElementById("btn");
+    var nav = document.getElementById("nav");
 
     // 메뉴 버튼을 클릭했을 때
     btn.addEventListener("click", function () {
-        nav.classList.toggle("hidden");
+      nav.classList.toggle("hidden");
     })
 
-    // 빈 공간을 클릭했을 때 
+    // 빈 공간을 클릭했을 때 처리
 
     // document에 이벤트 감시자(event listener)를 추가한다
-    // document가 이벤트 감지 영역이 됨
+    // document가 이벤트 감지 영역
     document.addEventListener("click", function (e) {
-        // e.target: 실제 이벤트가 발생한 엘리먼트
-    console.log(e.target);
+      // e.target: 실제 이벤트가 발생한 엘리먼트
+      console.log(e.target);
 
-    // 문서에서 버튼을 제외한 곳을 클릭했을 경우
-    if (e.target !== btn) {
-    nav.classList.add("hidden");
-    }
-    })
-</script> -->
-
-<!-- 내 답
-<style>
-    body {
-        height: 2000px;
-    }
-
-    #container {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 3rem;
-        width: 100%;
-    }
-
-    .container2 {
-        background-color: white;
-    }
-
-    /* #btn.invisible {
-        visibility: hidden;
-    } */
-
-    #nav {
-        margin: auto;
-        width: 10rem;
-        align-items: center;
-        font-weight: 600;
-       margin-top: 0.5rem;
-    }
-
-    .box {
-        width: 100%;
-        height: 25rem;
-        background: linear-gradient(to right, skyblue, blue);
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-</style>
-
-
-<header>
-    <div id="container">
-        <nav id="nav">Transparent NavBar</nav>
-    </div>
-</header>
-
-<div class="box"></div>
-
-<script>
-    var container = document.getElementById("container")
-
-    window.addEventListener("scroll", function () {
-        var scrollTop = document.documentElement.scrollTop;
-        console.log(scrollTop);
-
-        if (scrollTop > 100) {
-            container.classList.remove("container2");
-        } else {
-            container.classList.add("container2");
-        }
+      // 문서에서 버튼을 제외한 곳을 클릭했을 경우
+      if (e.target !== btn) {
+        nav.classList.add("hidden");
+      }
     })
 
-</script> -->
+  </script> -->
 
-
-
-
-<!-- <style>
+    <!-- <style>
     body {
-        height: 1000px;
-        margin: 0;
+      height: 1000px;
+      margin: 0;
     }
 
     header {
-        /* position */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
+      /* position */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
 
-        /* display */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      /* display */
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-        background-color: transparent;
-
-        transition: background-color 0.5s;
+      background-color: transparent;
+      /* 애니메이션 효과 */
+      transition: background-color 0.5s;
     }
 
     .bg-image {
-        background-image: linear-gradient(to right, skyblue, blue);
-        height: 400px;
+      background-image: linear-gradient(to right, #0ef, #0af);
+      height: 400px;
     }
 
     .active {
-        background-color: #fff;
+      background-color: #fff;
     }
-</style>
+  </style>
 
-<header id="header">
+  <header id="header">
     Transparent NavBar
-</header>
+  </header>
 
-<div class="bg-image"></div>
+  <div class="bg-image"></div>
 
-<script>
+  <script>
     var header = document.getElementById("header");
-    
+
     window.addEventListener("scroll", function () {
-    // 문서탑과 뷰포트 탑 사이의 거리
-    var scrollTop = document.documentElement.scrollTop;
-    
-    console.log(scrollTop);
-    
-    if (scrollTop > 50) {
-    header.classList.add("active");
-    } else {
-    header.classList.remove("active");
-    }
+      // 문서 탑과 뷰포트 탑 사이의 거리
+      var scrollTop = document.documentElement.scrollTop;
+
+      console.log(scrollTop);
+
+      if (scrollTop > 50) {
+        header.classList.add("active");
+      } else {
+        header.classList.remove("active");
+      }
     })
-</script> -->
+  </script> -->
 
 
-
-<style>
+    <!-- <style>
     #btn {
-    font-size: 2rem;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
+      font-size: 2rem;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
     }
 
     #side-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 16rem;
-    background-color: #fff;
-    transition: 0.2s;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 16rem;
+      background-color: #fff;
+      transition: 0.2s;
+      /* 포지션 경쟁이 발생할 때 값이 높을수록 우선순위를 갖는다 */
+      z-index: 1;
     }
 
     #side-bar h1 {
-    text-align: center;
+      text-align: center;
     }
 
     #overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0 0 0 / 0.2);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0 0 0 / 0.2);
     }
 
     #side-bar.hidden {
-    left: -16rem;
-
-    #overlay.hidden {
-    display: none;
+      left: -16rem;
     }
 
-</style>
+    #overlay.hidden {
+      display: none;
+    }
+  </style>
 
+  <button id="btn">&#9776;</button>
 
-
-<button id="btn">&#9776;</button>
-
-<nav id="side-bar" class="hidden">
-    <h1>Logo</h1>
+  <nav id="side-bar" class="hidden">
+    <h1>Logo</h3>
     <ul>
-        <li>Menu</li>
-        <li>Menu</li>
-        <li>Menu</li>
+      <li>Menu</li>
+      <li>Menu</li>
+      <li>Menu</li>
     </ul>
-</nav>
+  </nav>
 
-<div id="overlay" class="hidden"></div>
+  <div id="overlay" class="hidden"></div>
 
-<main>
+  <main>
     <h1>Side Bar</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, provident? Minus nihil, culpa laboriosam alias tenetur molestias. Nisi eum illum debitis? Velit quaerat fuga, quis sunt soluta officia ut iure.</p>
-</main>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+      Ipsa ipsum voluptatibus perferendis iusto consectetur odio
+      molestiae ratione est nobis facere quas nesciunt non animi commodi error, 
+      vel optio? Aspernatur, vel?</p>
+  </main>
 
-<script>
-    var btn=document.getElementById("btn");
-    var sideBar=document.getElementById("side-bar");
-    var overlay=document.getElementById("overlay");
+  <script>
+    var btn = document.getElementById("btn");
+    var sideBar = document.getElementById("side-bar");
+    var overlay = document.getElementById("overlay");
 
-    // 메뉴버튼을 클릭했을 때
-    btn.addEventListener("click", function() {
-    sideBar.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+    // 메뉴 버튼을 클릭했을 때
+    btn.addEventListener("click", function () {
+      sideBar.classList.remove("hidden");
+      overlay.classList.remove("hidden");
     })
-</script>
+
+    // 오버레이를 클릭했을 때
+    overlay.addEventListener("click", function () {
+      sideBar.classList.add("hidden");
+      overlay.classList.add("hidden");
+    })
+  </script> -->
+
+    <!-- <style>
+    body {
+      height: 1000px;
+    }
+
+    #header {
+      /* position */
+      position: fixed;
+      top: 0;
+      left: 0;
+      
+      /* size */
+      width: 100%;
+      height: 50px;
+
+      /* display */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      /* style */
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      
+      transition: top 0.2s;
+    }
+
+    #header.hidden {
+      top: -50px;
+    }
+
+    main {
+      margin-top: 4rem;
+    }
+  </style>
+
+  <header id="header">
+    Header
+  </header>
+
+  <main>
+    <h1>Switch NavBar</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse ad odio doloremque corrupti architecto quam error
+      natus illo commodi adipisci deleniti eligendi officiis molestiae eum iste, tenetur, rerum, eius fuga.</p>
+  </main>
+
+  <script>
+    var header = document.getElementById("header");
+    var previousScrollTop = 0;
+
+    window.addEventListener("scroll", function () {
+      var scrollTop = document.documentElement.scrollTop;
+
+      // 이전 시점의 변수(scrollTop)의 값에 접근
+      console.log("이전 스크롤 값:", previousScrollTop);
+      console.log("현재 스크롤 값:", scrollTop);
+
+      if (scrollTop > previousScrollTop) { // 스크롤을 내릴 때
+        header.classList.add("hidden");
+      } else { // 스크롤을 올릴 때
+        header.classList.remove("hidden");
+      }
+
+      previousScrollTop = scrollTop;
+    })
+
+  </script> -->
 
 
+    <!-- <h1>Drawer</h1>
+
+  <style>
+    #nav {
+      /* position */
+      position: fixed;
+      left: 0;
+      top: 100vh;
+
+      /* size */
+      width: 100%;
+      height: 100vh;
+      box-sizing: border-box;
+
+      /* style */
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 1rem 1rem 0 0;
+      
+      /* smooth */
+      transition: top 0.5s;
+    }
+
+    #drawer-handle {
+      /* size */
+      width: 100%;
+      padding: 1rem;
+
+      /* style */
+      border: none;
+      background-color: transparent;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  </style>
+
+  <nav id="nav" class="hidden">
+    <button id="drawer-handle">Drag me</button>
+    <ul>
+      <li>list item</li>
+      <li>list item</li>
+      <li>list item</li>
+    </ul>
+  </nav>
+
+  <button id="open-btn" type="button">More</button>
 
 
+  <script>
+    var nav = document.getElementById("nav");
+    var drawerHandle = document.getElementById("drawer-handle");
+    var openBtn = document.getElementById("open-btn");
+    var TOP;
+
+    // 열기 버튼을 클릭했을 때
+    openBtn.addEventListener("click", function () {
+      nav.style.top = "20vh";
+    })
+
+    // 터치중일 때
+    drawerHandle.addEventListener("touchmove", function (e) { // e: 이벤트 객체
+
+      // 손가락과 뷰포트 탑사이의 거리(y축)
+      var clientY = e.touches[0].clientY;
+
+      console.log(clientY);
+
+      // innerHeight: 뷰포트의 높이
+      TOP = clientY / window.innerHeight * 100;
+
+      nav.style.top = TOP + "vh";
+    })
+
+    // 터치가 끝났을 때
+    drawerHandle.addEventListener("touchend", function () {
+      console.log("터치 끝");
+
+      if (TOP > 50) { // 핸들을 반 이상 내렸을 경우
+        nav.style.top = "100vh"
+      } else {
+        nav.style.top = "20vh"
+      }
+    })
+
+  </script>
+   -->
 
 
+    <!-- 
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.2);
+        }
+
+        #modal {
+            background-color: #fff;
+            margin: 100px auto 0;
+            max-width: 20rem;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        #close-btn {
+            /* display */
+            float: right;
+
+            /* size */
+            padding: 1rem;
+
+            /* style */
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <h1>Modal Window</h1>
+
+    <button id="btn">Open</button>
+
+    <div id="overlay" class="hidden">
+        <button id="close-btn">&times;</button>
+        <div id="modal">
+            <h1>Heading</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea neque quibusdam earum consectetur quisquam,
+                ducimus aperiam? Iusto ea debitis quas voluptatem aliquid, hic id blanditiis corrupti eum porro! Ad,
+                nihil.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var overlay = document.getElementById("overlay");
+        var btn = document.getElementById("btn");
+        var closeBtn = document.getElementById("close-btn");
+
+        // 오픈 버튼을 클릭했을 때
+        btn.addEventListener("click", function () {
+            overlay.classList.remove("hidden");
+        })
+
+        // overlay: 이벤트 감지 영역
+        // addEventListener: 이벤트 감시자를 추가한다
+        overlay.addEventListener("click", function (e) { // e: 이벤트 객체
+
+            console.log(e.target); // 실제 이벤트가 발생한 엘리먼트
+
+            // 클릭한 부분이 overlay일 때
+            if (e.target === overlay || e.target === closeBtn) {
+            overlay.classList.add("hidden");
+            }
+            
+        })
+
+    </script> -->
+
+    <!-- 내 답
+    <style>
+        html {
+            display: inline;
+        }
+
+        #container {
+            display: flex;
+        }
+
+        .thumbnail {
+            width: 10rem;
+            height:7rem;
+            margin: 0;
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0 0 0 / 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .h_d {
+            display: none;
+        }
 
 
+        .modal .modal_2 {
+            margin: 100px auto 0;
+            max-width: 20rem;
+            padding: 1rem;
+            display: block;
+        }
+
+        #p_btn {
+            float: right;
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 0.5rem;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+    </style>
 
 
+    <h1>Q. Modal Gallery</h1>
+    <div id="container">
+        <img id="p1" class="thumbnail"
+            src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg"
+            alt="">
+        <img id="p2" class="thumbnail"
+            src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg"
+            alt="">
+        <img id="p3" class="thumbnail"
+            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
+            alt="">
+    </div>
+
+    <div id="overlay" class="hidden">
+        <button id="p_btn">&times;</button>
+        <img class="modal" src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
+        <img class="modal_2" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt="">
+
+    </div>
+
+    <script>
+        var overlay = document.getElementById("overlay");
+        var p_btn = document.getElementById("p_btn");
+        var thumbnail= document.getElementsByClassName("thumbnail")
+        var p1 = document.getElementById("p1");
+        var p2 = document.getElementById("p2");
+        var modal= document.getElementById("modal");
+        var modal_2= document.getElementById("modal_2");
+
+        thumbnail[0].addEventListener("click", function (e) {
+            console.log(e.target);
+
+            if (e.target === p1) {
+            overlay.classList.remove("hidden");
+            modal_2.classList.add("h_d");
+            } else (e.target === p2) {
+                overlay.classList.remove("hidden");
+            modal.classList.add("h_d");
+            }
+        })
+
+        overlay.addEventListener("click", function (e) {
+            console.log(e.target)
+
+            if (e.target === overlay || e.target === p_btn) {
+            overlay.classList.add("hidden");
+            }
+        })
+    </script> -->
 
 
+    <!-- 쌤 답 -->
+    <!-- <style>
+        #overlay {
+            position: fixed;
+            background-color: rgba(0 0 0 / 0.2);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #modal {
+            width: 20rem;
+            height: 20rem;
+            object-fit: cover;
+            /* margin에서 auto를 쓰려면 block만 가능하다  */
+            display: block;
+            margin: 100px auto 0;
+        }
+
+        #close-btn {
+            font-size: 2rem;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            float: right;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .container img:hover {
+            opacity: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <h1>Modal Gallery</h1>
+    <div id="overlay" class="hidden">
+        <button id="close-btn">&times;</button>
+        <img src="" alt="" id="modal">
+    </div>
+
+    <div class="container">
+        <img class="thumbnail"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
+            alt="">
+        <img class="thumbnail" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt="">
+        <img class="thumbnail"
+            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
+            alt="">
+    </div>
+
+    <script>
+        var overlay = document.getElementById("overlay");
+        var modal = document.getElementById("modal");
+        var thumbnails = document.getElementsByClassName("thumbnail");
+        var closeBtn = document.getElementById("closeBtn");
+
+        console.log(thumbnails); // HTMLCollection(3)
+
+        for (var i = 0; i < thumbnails.length; i++) {
+            // 각각의 썸네일에 이벤트리스너를 연결한다
+            thumbnails[i].addEventListener("click", function (e) {
+                console.log(e.target);
+
+                // 썸네일의 소스를 모달 이미지의 소스에 전달한다
+                modal.src = e.target.src;
+                // 오버레이를 나타나게 한다
+                overlay.classList.remove("hidden");
+            })
+        }
+
+        overlay.addEventListener("click", function (e) {
+            if (e.target === overlay || e.target === closeBtn) {
+                overlay.classList.add("hidden");
+            }
+        })
+    </script> -->
 
 
+    <style>
+        #main {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .container {
+            width: 300px;
+            display: flex;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .active {
+            outline: 4px solid #0bf;
+            z-index: 1;
+        }
+    </style>
+
+    <h1>Gallery</h1>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
+        alt="" id="main">
+
+    <h3>Thumbnails</h3>
+
+    <div class="container">
+        <img class="thumbnail active"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
+            alt="" onclick="jumpTo(0)">
+        <img class="thumbnail" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt=""
+            onclick="jumpTo(1)">
+        <img class="thumbnail"
+            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
+            alt="" onclick="jumpTo(2)">
+    </div>
+
+    <script>
+        var thumbnails = document.getElementsByClassName('thumbnail');
+        var main = document.getElementById('main');
+        var previousIndex = 0; // 0인 이유: 처음엔 첫번째 사진부터 시작하니까
+
+
+        // 이벤트 attribute
+        // onEventName=eventHandler()
+        function jumpTo(thisIndex) {
+            // 이전 시점의 변수값에 접근할 수 있다
+            console.log("이전 인덱스:", previousIndex);
+            console.log("현재 인덱스:", thisIndex);
+
+            // 썸네일의 소스를 메인이미지의 소스에 전달한다
+            main.src = thumbnails[thisIndex].src;
+
+            // 같은 썸네일을 다시 클릭했을 경우
+            if (thisIndex === previousIndex) {
+                return; // 밑 코드는 실행되지 않게 한다
+            }
+
+            // 현재 선택한 썸네일에 active 클래스를 추가한다
+            thumbnails[thisIndex].classList.add("active");
+            // 이전에 선택한 썸네일의 active 클래스를 제거한다
+            thumbnails[previousIndex].classList.remove("active");
+
+            previousIndex = thisIndex;
+        }
+    </script>
 
 
 
 
 
 </body>
+
 </html>
