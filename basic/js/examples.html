@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript 예제</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 예제</title>
 </head>
 
 <body>
 
-    <!-- <style>
+  <!-- <style>
     #btn {
       width: 2rem;
       cursor: pointer;
@@ -41,7 +41,7 @@
     })
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
       #container {
         position: relative;
         display: inline-block;
@@ -88,7 +88,7 @@
     })
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
     #container {
       display: inline;
     }
@@ -138,7 +138,7 @@
 
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
     html {
       /* 부드럽게 스크롤된다 */
       scroll-behavior: smooth;
@@ -202,7 +202,7 @@
     })
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
     body {
       height: 2000px;
     }
@@ -309,7 +309,7 @@
 
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
     body {
       height: 1000px;
       margin: 0;
@@ -367,7 +367,7 @@
   </script> -->
 
 
-    <!-- <style>
+  <!-- <style>
     #btn {
       font-size: 2rem;
       background-color: transparent;
@@ -448,7 +448,7 @@
     })
   </script> -->
 
-    <!-- <style>
+  <!-- <style>
     body {
       height: 1000px;
     }
@@ -517,7 +517,7 @@
   </script> -->
 
 
-    <!-- <h1>Drawer</h1>
+  <!-- <h1>Drawer</h1>
 
   <style>
     #nav {
@@ -601,368 +601,851 @@
       }
     })
 
-  </script>
-   -->
+  </script> -->
 
+  <!-- <style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0 0 0 / 0.2);
+    }
 
-    <!-- 
-    <style>
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0 0 0 / 0.2);
-        }
+    #modal {
+      background-color: #fff;
+      margin: 100px auto 0;
+      max-width: 20rem;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
 
-        #modal {
-            background-color: #fff;
-            margin: 100px auto 0;
-            max-width: 20rem;
-            padding: 1rem;
-            border-radius: 1rem;
-        }
+    #close-btn {
+      /* display */
+      float: right;
+      
+      /* size */
+      padding: 1rem;
 
-        #close-btn {
-            /* display */
-            float: right;
+      /* style */
+      border: none;
+      background-color: transparent;
+      color: #fff;
+      font-size: 2rem;
+    }
 
-            /* size */
-            padding: 1rem;
+    .hidden {
+      display: none;
+    }
+  </style>
 
-            /* style */
-            border: none;
-            background-color: transparent;
-            color: #fff;
-            font-size: 2rem;
-        }
+  <h1>Modal Window</h1>
 
-        .hidden {
-            display: none;
-        }
-    </style>
+  <button id="btn">Open</button>
 
-    <h1>Modal Window</h1>
-
-    <button id="btn">Open</button>
-
-    <div id="overlay" class="hidden">
-        <button id="close-btn">&times;</button>
-        <div id="modal">
-            <h1>Heading</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea neque quibusdam earum consectetur quisquam,
-                ducimus aperiam? Iusto ea debitis quas voluptatem aliquid, hic id blanditiis corrupti eum porro! Ad,
-                nihil.
-            </p>
-        </div>
+  <div id="overlay" class="hidden">
+    <button id="close-btn">&times;</button>
+    <div id="modal">
+      <h1>Heading</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, asperiores quam? Porro, sit cum maiores odio
+        reprehenderit ea, molestiae quibusdam iusto eos, id molestias quas ipsam temporibus quo quam distinctio!</p>
     </div>
+  </div>
 
-    <script>
-        var overlay = document.getElementById("overlay");
-        var btn = document.getElementById("btn");
-        var closeBtn = document.getElementById("close-btn");
+  <script>
+    var overlay = document.getElementById("overlay");
+    var btn = document.getElementById("btn");
+    var closeBtn = document.getElementById("close-btn");
 
-        // 오픈 버튼을 클릭했을 때
-        btn.addEventListener("click", function () {
-            overlay.classList.remove("hidden");
-        })
+    // 오픈 버튼을 클릭했을 때
+    btn.addEventListener("click", function () {
+      overlay.classList.remove("hidden");
+    })
 
-        // overlay: 이벤트 감지 영역
-        // addEventListener: 이벤트 감시자를 추가한다
-        overlay.addEventListener("click", function (e) { // e: 이벤트 객체
+    // overlay: 이벤트 감지 영역
+    // addEventListener: 이벤트 감시자를 추가한다
+    overlay.addEventListener("click", function (e) { // e: 이벤트 객체
 
-            console.log(e.target); // 실제 이벤트가 발생한 엘리먼트
+      console.log(e.target); // 실제 이벤트가 발생한 엘리먼트
 
-            // 클릭한 부분이 overlay일 때
-            if (e.target === overlay || e.target === closeBtn) {
-            overlay.classList.add("hidden");
-            }
-            
-        })
+      // 클릭한 부분이 overlay일 때 또는 닫기 버튼일 때
+      if (e.target === overlay || e.target === closeBtn) {
+        overlay.classList.add("hidden");
+      }
+    })
+  </script> -->
 
-    </script> -->
+  <!-- <style>
+    #overlay {
+      position: fixed;
+      background-color: rgba(0 0 0 / 0.2);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
 
-    <!-- 내 답
-    <style>
-        html {
-            display: inline;
-        }
+    #modal {
+      width: 20rem;
+      height: 20rem;
+      object-fit: cover;
+      display: block;
+      margin: 100px auto 0;
+    }
 
-        #container {
-            display: flex;
-        }
+    #close-btn {
+      font-size: 2rem;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      float: right;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+    }
 
-        .thumbnail {
-            width: 10rem;
-            height:7rem;
-            margin: 0;
-            cursor: pointer;
-            object-fit: cover;
-        }
+    .container {
+      display: flex;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0 0 0 / 0.2);
-        }
+    .container img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.8;
+    }
 
-        .hidden {
-            display: none;
-        }
+    .container img:hover {
+      opacity: 1;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
 
-        .h_d {
-            display: none;
-        }
+  <h1>Modal Gallery</h1>
 
+  <div id="overlay" class="hidden">
+    <button id="close-btn">&times;</button>
+    <img src="" alt="" id="modal">
+  </div>
+  
+  <div class="container">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="">
+  </div>
 
-        .modal .modal_2 {
-            margin: 100px auto 0;
-            max-width: 20rem;
-            padding: 1rem;
-            display: block;
-        }
+  <script>
+    var overlay = document.getElementById("overlay");
+    var modal = document.getElementById('modal');
+    var thumbnails = document.getElementsByClassName('thumbnail');
+    var closeBtn = document.getElementById('close-btn');
 
-        #p_btn {
-            float: right;
-            border: none;
-            background-color: transparent;
-            color: #fff;
-            font-size: 2rem;
-            margin-top: 0.5rem;
-            margin-right: 1rem;
-            cursor: pointer;
-        }
-    </style>
+    console.log(thumbnails); // HTMLCollection(3)
 
+    for (var i=0; i<thumbnails.length; i++) {
+      // 각각의 썸네일에 이벤트리스너를 연결한다
+      thumbnails[i].addEventListener("click", function (e) {
+        console.log(e.target);
 
-    <h1>Q. Modal Gallery</h1>
+        // 썸네일의 소스를 모달 이미지의 소스에 전달한다
+        modal.src = e.target.src;
+        // 오버레이를 나타나게 한다
+        overlay.classList.remove("hidden");
+      })
+    }
+
+    // 모달 닫기
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay || e.target === closeBtn) {
+        overlay.classList.add("hidden");
+      }
+    })
+  </script> -->
+
+  <!-- <style>
+    #main {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 300px;
+      display: flex;
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    .active {
+      outline: 4px solid #0bf;
+      z-index: 1;
+    }
+  </style>
+
+  <h1>Gallery</h1>
+
+  <img src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" id="main">
+  
+  <h3>Thumbnails</h3>
+
+  <div class="container">
+    <img class="thumbnail active" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" onclick="jumpTo(0)">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="" onclick="jumpTo(1)">
+    <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="" onclick="jumpTo(2)">
+  </div>
+
+  <script>
+    var thumbnails = document.getElementsByClassName('thumbnail');
+    var main = document.getElementById('main');
+    var previousIndex = 0;
+
+    // 이벤트 attribute
+    // onEventName=eventHandler()
+    function jumpTo(thisIndex) {
+      // 이전 시점의 변수값에 접근할 수 있다
+      console.log("이전 인덱스:", previousIndex);
+      console.log("현재 인덱스:", thisIndex);
+
+      // 썸네일의 소스를 메인이미지의 소스에 전달한다
+      main.src = thumbnails[thisIndex].src;
+
+      // 같은 썸네일을 다시 클릭했을 경우
+      if (thisIndex === previousIndex) {
+        return;
+      }
+
+      // 현재 선택한 썸네일에 active 클래스를 추가한다
+      thumbnails[thisIndex].classList.add("active");
+      // 이전에 선택한 썸네일의 active 클래스를 제거한다
+      thumbnails[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
+  <!-- <h1>Carousel</h1>
+
+  <style>
+    /* 전체선택자 */
+    * { 
+      box-sizing: border-box;
+    }
+
+    .section {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+     /* images */
+     #container {
+      height: 200px;
+      display: inline-flex;
+      transition: 0.2s;
+    }
+
+    .item {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* buttons */
+    #prev-btn, #next-btn {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+    }
+
+    #prev-btn {
+      top: 0;
+      left: 0;
+    }
+
+    #next-btn {
+      top: 0;
+      right: 0;
+    }
+
+    /* indicator */
+    .indicator {
+      position: absolute;
+      bottom: 0.25rem;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .dot {
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    /* toggle class */
+    .hidden {
+      visibility: hidden
+    }
+
+    .active {
+      opacity: 1;
+    }
+  </style>
+
+  <div class="section">
     <div id="container">
-        <img id="p1" class="thumbnail"
-            src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg"
-            alt="">
-        <img id="p2" class="thumbnail"
-            src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg"
-            alt="">
-        <img id="p3" class="thumbnail"
-            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
-            alt="">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="">
+      <img class="item" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="">
     </div>
 
-    <div id="overlay" class="hidden">
-        <button id="p_btn">&times;</button>
-        <img class="modal" src="https://product.cdn.cevaws.com/var/storage/images/_aliases/reference/media/feliway-2017/images/kor-kr/1_gnetb-7sfmbx49emluey4a/6341829-1-kor-KR/1_gNETb-7SfMBX49EMLUeY4A.jpg" alt="">
-        <img class="modal_2" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt="">
+    <button id="prev-btn" class="hidden" onclick="navigateTo(-1)">
+      &#10094;
+    </button>
+    <button id="next-btn" onclick="navigateTo(1)">
+      &#10095;
+    </button>
 
+    <div class="indicator">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <script>
+    var container = document.getElementById('container');
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
+    var dots = document.getElementsByClassName('dot');
+    var imageWidth = 200;
+    var previousIndex = 0;
+    var thisIndex = 0;
+
+    // console.log(dots);
+
+    function navigateTo(data) {
+      thisIndex += data;
+
+      console.log("현재 인덱스:", thisIndex);
+      // 이전 시점의 변수 값에 접근할 수 있다
+      console.log("이전 인덱스:", previousIndex);
+
+      container.style.transform = `translateX(-${thisIndex * imageWidth}px)`;
+
+      // 마지막 이미지 일 경우 다음버튼 처리
+      if (thisIndex === 2) { // 마지막 이미지인 경우
+        nextBtn.classList.add("hidden");
+      } else { // 마지막 이미지가 아닌 경우
+        nextBtn.classList.remove("hidden");
+      }
+
+      // 이전 버튼 처리
+      if (thisIndex !== 0) { // 첫번째 이미지가 아닌 경우
+        prevBtn.classList.remove("hidden");
+      } else { // 첫번째 이미지인 경우
+        prevBtn.classList.add("hidden")
+      }
+
+      // Indicator
+      dots[thisIndex].classList.add("active");
+      dots[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
+  <!-- <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* main image */
+    .section {
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+
+    #main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* thumbnails */
+    .container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      bottom: 1rem;
+      width: 100%;
+    }
+
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    /* toggle class */
+    .active {
+      outline: 2px solid #0bf;
+      z-index: 10;
+    }
+  </style>
+
+  <h1>Auto Gallery</h1>
+
+  <div class="section">
+   
+    <img src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="" id="main">
+
+   
+    <div class="container">
+      <img class="thumbnail active" src="https://tvvmvn.github.io/front-end/img/Simba.webp" alt="Simba">
+      <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Timon.webp" alt="Timon">
+      <img class="thumbnail" src="https://tvvmvn.github.io/front-end/img/Pumbaa.webp" alt="Pumbaa">
+    </div>
+  </div>
+
+  <script>
+    var thumbnails = document.getElementsByClassName('thumbnail');
+    var caption = document.getElementById('caption');
+    var main = document.getElementById('main');
+    var thisIndex = 0;
+    var previousIndex = 0;
+
+    setInterval(navigate, 3000);
+
+    // console.log(thumbnails); // HTMLCollection(length)
+
+    function navigate() {
+      thisIndex++;
+
+      if (thisIndex === thumbnails.length) {
+        thisIndex = 0;
+      }
+
+      console.log("현재 인덱스:", thisIndex);
+      console.log("이전 인덱스:", previousIndex);
+
+
+      // 썸네일의 소스를 메인 이미지의 소스에 전달한다
+      main.src = thumbnails[thisIndex].src;
+
+      // active 클래스 변경
+      thumbnails[thisIndex].classList.add("active");
+      thumbnails[previousIndex].classList.remove("active");
+
+      previousIndex = thisIndex;
+    }
+  </script> -->
+
+
+
+  <!-- <style>
+    #form {
+    width: 24rem;
+    }
+
+    .form-group {
+    display: flex;
+    }
+
+    input {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    flex-grow: 1;
+    font-size: 1rem;
+    }
+
+    .btn {
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    }
+
+    .hidden {
+    display: none;
+    }
+    
+  </style>
+
+  <form action="" id="form">
+    <h1>뉴스레터</h1>
+
+    <div class="form-group">
+      <input type="email" value="john@example.com" required>
+      <button class="btn">Submit</button>
     </div>
 
-    <script>
-        var overlay = document.getElementById("overlay");
-        var p_btn = document.getElementById("p_btn");
-        var thumbnail= document.getElementsByClassName("thumbnail")
-        var p1 = document.getElementById("p1");
-        var p2 = document.getElementById("p2");
-        var modal= document.getElementById("modal");
-        var modal_2= document.getElementById("modal_2");
+    <div id="success-message" class="hidden">
+      <h1>구독해주셔서 감사합니다!</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam minima nihil, aliquam aliquid iusto est possimus similique voluptatibus perferendis cupiditate. Laudantium officiis autem dolorum soluta ad cum quo, repellendus nostrum!
+      </p>
+    </div>
+  </form>
 
-        thumbnail[0].addEventListener("click", function (e) {
-            console.log(e.target);
+  <script>
+    var form=document.getElementById("form");
+    var successMessage=document.getElementById("success-message");
 
-            if (e.target === p1) {
-            overlay.classList.remove("hidden");
-            modal_2.classList.add("h_d");
-            } else (e.target === p2) {
-                overlay.classList.remove("hidden");
-            modal.classList.add("h_d");
-            }
-        })
+    // 폼의 제출 이벤트
+    form.addEventListener("submit", function (e) {
+    e.preventDefault(); // 새로고침 방지
 
-        overlay.addEventListener("click", function (e) {
-            console.log(e.target)
+    // AJAX 요청 (새로고침 없이 서버에 요청하는 기술)
 
-            if (e.target === overlay || e.target === p_btn) {
-            overlay.classList.add("hidden");
-            }
-        })
-    </script> -->
+    // 요청 성공 후 사용자에게 성공메세지를 보여준다
+    form.classList.add("hidden");
+    successMessage.classList.remove("hidden");
+    })
+  </script> -->
 
 
-    <!-- 쌤 답 -->
-    <!-- <style>
-        #overlay {
-            position: fixed;
-            background-color: rgba(0 0 0 / 0.2);
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
+
+  <!-- <style>
+    .container {
+      width: 20rem;
+    }
+
+    #input {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    #list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .item {
+      padding: 0.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <h1>Live Search</h1>
+
+  <div class="container">
+    <input type="text" name="" id="input" placeholder="search">
+
+    <ul id="list">
+      <li class="item">Guinness</li>
+      <li class="item">Heineken</li>
+      <li class="item">Budwiser</li>
+      <li class="item">Kloud</li>
+      <li class="item">Asahi</li>
+    </ul>
+  </div>
+
+  <script>
+    var input = document.getElementById("input");
+
+    // keyup: 키보드에서 손을 뗐을 때
+    input.addEventListener("keyup", function (e) {
+      // e.target = input
+      var value = e.target.value;
+
+      // HTMLcollection(length)
+      var items = document.getElementsByClassName("item");
+
+      // input의  value와 리스트 아이템을 비교한다
+      for (var i = 0; i < items.length; i++) {
+        // 맥주이름
+        var textContent = items[i].textContent;
+
+        // 인풋의 value와 맥주이름을 모두 소문자로 변환한다
+        value = value.toLowerCase();
+        textContent = textContent.toLowerCase();
+
+        console.log(textContent, value);
+
+        // indexOf(value): 문자열 내에서 value의 index를 리턴한다 / -1은 없는 인자가 나왔을때를 의미 (문자열은 0,1,2... 시작하므로 역(-)으로 가면 없는 인자라는 뜻)
+        if (textContent.indexOf(value) > -1) { // 맥주이름이 value를 포함할 때
+          items[i].classList.remove("hidden");
+        } else { // 맥주이름이 value를 포함하지 않을 때
+          items[i].classList.add("hidden");
+        }
+      }
+    })
+  </script> -->
+
+
+
+  <!-- <style>
+    label {
+      display: block;
+    }
+
+    input {
+      width: 16rem;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+    }
+
+    .success {
+      color: #0bf;
+    }
+
+    .error {
+      color: #f00;
+    }
+  </style>
+
+  <h1>실시간 유효성 검사</h1>
+
+  <div class="container">
+    <label for="">Username</label>
+    <input type="text" id="input">
+    <p id="message">유저이름을 입력하세요</p>
+  </div>
+
+  <script>
+    var input = document.getElementById("input");
+    var message = document.getElementById("message");
+
+    input.addEventListener("keyup", function (e) {
+      try {
+        // e.target = input
+        var username = e.target.value; // e.target을 input으로 써도 된다
+
+        console.log(username);
+
+        // 유저이름을 입력하지 않은 경우
+        if (!username) {
+        throw "유저이름은 필수입니다"
         }
 
-        #modal {
-            width: 20rem;
-            height: 20rem;
-            object-fit: cover;
-            /* margin에서 auto를 쓰려면 block만 가능하다  */
-            display: block;
-            margin: 100px auto 0;
+        // 유효하지않은 유저이름인 경우
+
+        // 유저이름이 짧은 경우
+        if (username.length < 5) {
+        throw "유저이름이 너무 짧습니다"
         }
 
-        #close-btn {
-            font-size: 2rem;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            float: right;
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
+        // match(value): 문자열이 value를 포함하지 않을 경우 null을 리턴한다
+        // 정규식(/패턴/): 문자열 검색에 필요한 패턴을 제공한다
+        if (username.match(/[^a-z0-9_]/)) { // a~z가 아닐경우 / 0~9가 아닐경우  ^: 부정
+        throw "영어 소문자, 숫자와 언더스코어만 사용가능합니다"
         }
 
-        .container {
-            display: flex;
-        }
+        message.innerHTML = `<span class="success">사용가능합니다</span>`
 
-        .container img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            cursor: pointer;
-            opacity: 0.8;
-        }
+      } catch (error) {
+        message.innerHTML = `<span class="error">${error}</span>`
+      }
+    })
+  </script> -->
 
-        .container img:hover {
-            opacity: 1;
-        }
 
-        .hidden {
-            display: none;
-        }
-    </style>
+  <!-- <h1>Contact Form</h1>
+  
+<label for="">fi</label>
+  <form action="" id="form">
+    <input type="text" id="input">
+    <button>제출</button>
+  </form>
 
-    <h1>Modal Gallery</h1>
-    <div id="overlay" class="hidden">
-        <button id="close-btn">&times;</button>
-        <img src="" alt="" id="modal">
+  <script>
+    var form = document.getElementById("form");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      console.log("유효성 검사 시작", input.value);
+    })
+  </script> -->
+
+
+
+  <!-- 내 답 -->
+
+  <!-- <style>
+    #form {
+      width: 20rem;
+      display: block;
+    }
+
+    label {
+      display: block;
+    }
+  </style>
+
+  <h1>Contact Form</h1>
+
+  <form action="" id="form">
+
+    <div class="container">
+      <label for="">First name</label>
+      <input type="text" placeholder="John" id="input">
+      <p class="message">First name is required</p>
     </div>
 
     <div class="container">
-        <img class="thumbnail"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
-            alt="">
-        <img class="thumbnail" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt="">
-        <img class="thumbnail"
-            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
-            alt="">
+      <label for="">First name</label>
+      <input type="text" placeholder="Doe">
+      <p>Last name is required</p>
     </div>
-
-    <script>
-        var overlay = document.getElementById("overlay");
-        var modal = document.getElementById("modal");
-        var thumbnails = document.getElementsByClassName("thumbnail");
-        var closeBtn = document.getElementById("closeBtn");
-
-        console.log(thumbnails); // HTMLCollection(3)
-
-        for (var i = 0; i < thumbnails.length; i++) {
-            // 각각의 썸네일에 이벤트리스너를 연결한다
-            thumbnails[i].addEventListener("click", function (e) {
-                console.log(e.target);
-
-                // 썸네일의 소스를 모달 이미지의 소스에 전달한다
-                modal.src = e.target.src;
-                // 오버레이를 나타나게 한다
-                overlay.classList.remove("hidden");
-            })
-        }
-
-        overlay.addEventListener("click", function (e) {
-            if (e.target === overlay || e.target === closeBtn) {
-                overlay.classList.add("hidden");
-            }
-        })
-    </script> -->
-
-
-    <style>
-        #main {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .container {
-            width: 300px;
-            display: flex;
-        }
-
-        .thumbnail {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-
-        .active {
-            outline: 4px solid #0bf;
-            z-index: 1;
-        }
-    </style>
-
-    <h1>Gallery</h1>
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
-        alt="" id="main">
-
-    <h3>Thumbnails</h3>
 
     <div class="container">
-        <img class="thumbnail active"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUjubkCFJVNUrpWlMYXjvuftHjfW40z62Eg&usqp=CAU"
-            alt="" onclick="jumpTo(0)">
-        <img class="thumbnail" src="https://www.sisain.co.kr/news/photo/202110/45791_82634_4851.jpg" alt=""
-            onclick="jumpTo(1)">
-        <img class="thumbnail"
-            src="https://cdn.eyesmag.com/content/uploads/posts/2022/08/08/main-ad65ae47-5a50-456d-a41f-528b63071b7b.jpg"
-            alt="" onclick="jumpTo(2)">
+      <label for="">First name</label>
+      <input type="text" placeholder="JohnDoe@example.com">
+      <p>E-mail is required</p>
     </div>
 
-    <script>
-        var thumbnails = document.getElementsByClassName('thumbnail');
-        var main = document.getElementById('main');
-        var previousIndex = 0; // 0인 이유: 처음엔 첫번째 사진부터 시작하니까
+    <button>Submit</button>
+  </form>
 
+  <script>
+    var input = document.getElementById("input");
+    var message = document.getElementsByClassName("message");
+    var form = document.getElementById("form");
 
-        // 이벤트 attribute
-        // onEventName=eventHandler()
-        function jumpTo(thisIndex) {
-            // 이전 시점의 변수값에 접근할 수 있다
-            console.log("이전 인덱스:", previousIndex);
-            console.log("현재 인덱스:", thisIndex);
+    form.addEventListener("submit", function (e) {
 
-            // 썸네일의 소스를 메인이미지의 소스에 전달한다
-            main.src = thumbnails[thisIndex].src;
+      try {
+        e.preventDefault();
 
-            // 같은 썸네일을 다시 클릭했을 경우
-            if (thisIndex === previousIndex) {
-                return; // 밑 코드는 실행되지 않게 한다
-            }
+        var input = e.target.value;
 
-            // 현재 선택한 썸네일에 active 클래스를 추가한다
-            thumbnails[thisIndex].classList.add("active");
-            // 이전에 선택한 썸네일의 active 클래스를 제거한다
-            thumbnails[previousIndex].classList.remove("active");
+        console.log(input.value);
 
-            previousIndex = thisIndex;
+        if (input.match(/[^a-z0-9_]/)) { // a~z가 아닐경우 / 0~9가 아닐경우  ^: 부정
+          throw "영어 소문자, 숫자와 언더스코어만 사용가능합니다"
         }
-    </script>
+
+        message.innerHTML = `<span class="success">사용가능합니다</span>`
+      } catch (error) {
+        message.innerHTML = `<span class="error">${error}</span>`
+      }
+    })
+  </script> -->
 
 
+  <!-- 쌤 답 -->
+  <style>
+    #form {
+      width: 20rem;
+    }
 
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+    }
+
+    button[type=submit] {
+      padding: 0.5rem 0.75rem;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .error-message {
+      color: #f00;
+      margin: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <h1>Contact Form</h1>
+
+  <form action="" id="form">
+    <div class="form-group">
+      <label for="">이름</label>
+      <input type="text" name="fname" placeholder="John">
+      <p id="fname-error" class="error-message hidden"></p>
+    </div>
+
+    <div class="form-group">
+      <label for="">성</label>
+      <input type="text" name="lname" placeholder="Doe">
+      <p id="lname-error" class="error-message hidden"></p>
+    </div>
+
+    <div class="form-group">
+      <label for="">이메일</label>
+      <input type="text" name="" id="" placeholder="JohnDoe@example.com">
+      <p id="email-error" class="error-message hidden"></p>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    var form = document.getElementById('form');
+    // 에러메시지
+    var fnameError = document.getElementById('fname-error');
+    var lnameError = document.getElementById('lname-error');
+    var emailError = document.getElementById('email-error');
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var formData = new FormData(e.target);
+
+      // FormData.get(name): name 속성으로 input의 value에 접근할 수 있다
+      var fname = FormData.get('fname');
+      var lname = FormData.get('lname');
+      var email = FormData.get('email');
+
+      // 입력데이터에 접근
+      console.log(fname, lname.email);
+
+      // 이름 유효성 검사 
+      if (!fname.trim() { // 
+      fnameError.classList.remove('hidden');
+      fnameError.textContent='이름은 필수입니다'
+      } else if (fname.match(/[^a-z0-9_]/)) {
+      fnameError.classList.remove('hidden');
+      fnameError.textContent='올바르지않은이름입니다'
+      } else {
+      fnameError.classList.add('hidden');
+      }
+    })
+
+  </script>
 
 
 </body>
