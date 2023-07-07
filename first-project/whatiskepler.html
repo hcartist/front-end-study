@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Project</title>
+    <!-- tailwindcss CDN -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <!-- custom Css -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="h-screen flex justify-center items-center">
+
+    <style>
+
+        .nosee {
+            display: none;
+        }
+    </style>
+
+
+    <div id="intro">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/The_Earth_seen_from_Apollo_17_with_transparent_background.png/1029px-The_Earth_seen_from_Apollo_17_with_transparent_background.png"
+            alt="" class="w-[20rem] h-[20rem] cursor-pointer" id="earth">
+
+        <div class=""></div>
+    </div>
+
+
+    <div id="dd" class="nosee">
+
+            <h1 class="text-6xl text-black">What Is Kepler?</h1>
+
+            <div class="mt-[7rem] flex">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Kepler22b-artwork.jpg/1200px-Kepler22b-artwork.jpg"
+                    alt="" class="w-[30rem] h-[30rem] object-cover">
+
+                <p class="text-black w-[25rem] ml-[2rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quisquam ut maxime harum. Maxime ea ut blanditiis amet a tempora, laboriosam quis voluptas deserunt
+                    vitae vel asperiores voluptatem aliquam, numquam quo.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat provident autem blanditiis
+                    maxime temporibus dolorum, saepe fugit placeat enim ex dolores dicta, quas eaque. Quia eveniet eius
+                    incidunt dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quisquam
+                    assumenda ipsam id facere. Ducimus doloremque sed excepturi eligendi omnis eaque! Nisi excepturi
+                    temporibus dolorem ex. Velit cupiditate iusto quae!
+                </p>
+                <p class="text-black w-[25rem] ml-[2rem]">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quisquam ut maxime harum. Maxime ea ut blanditiis amet a tempora, laboriosam quis voluptas deserunt
+                    vitae vel asperiores voluptatem aliquam, numquam quo.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat provident autem blanditiis
+                    maxime temporibus dolorum, saepe fugit placeat enim ex dolores dicta, quas eaque. Quia eveniet eius
+                    incidunt dolore?Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quisquam
+                    assumenda ipsam id facere. Ducimus doloremque sed excepturi eligendi omnis eaque! Nisi excepturi
+                    temporibus dolorem ex. Velit cupiditate iusto quae!
+                </p>
+
+        </div>
+
+
+<!-- <div class="bg-black opacity-50 top-0 left-0 right-0 bottom-0"></div>
+        <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
+    alt="" class="w-screen h-screen"> -->
+    </div>
+
+
+    <script>
+        var earth = document.getElementById('earth');
+        var dd = document.getElementById('dd')
+
+        earth.addEventListener('click', function () {
+            earth.classList.add('nosee');
+            dd.classList.remove('nosee');
+        })
+    </script>
+
+</body>
+
+</html>
