@@ -1,3 +1,4 @@
+import { useContext, createContext, useState } from "react";
 
 /*
 리액트 튜토리얼
@@ -195,7 +196,7 @@ export default function App() {
 
 //   //  내 답
 // //   const beerList = beers.map((beer, index) => (
-    
+
 // //     <table key={index}>
 // //       <th>Name</th>
 // //       <th>Origin</th>
@@ -263,61 +264,385 @@ export default function App() {
 
 // 1 컴포넌트 합성
 
-function Content() {
-return (
-  <>
-  <h2>고양이는 액체일까?</h2>
+// function Content() {
+// return (
+//   <>
+//   <h2>고양이는 액체일까?</h2>
 
-  {/*video*/}
-  <img 
-  src="https://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg"
-  alt=""
-  width="100%"
-  />
-   </>
-  )
-}
+//   {/*video*/}
+//   <img 
+//   src="https://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg"
+//   alt=""
+//   width="100%"
+//   />
+//    </>
+//   )
+// }
 
-function Comments() {
-return (
-  
-  <ul>
-    <li>댓글1</li>
-    <li>댓글2</li>
-    <li>댓글3</li>
-  </ul>
-  )
-}
+// function Comments() {
+// return (
 
-function Suggested() {
-return (
-  <ul>
-    <li>고양이는 정말 폭력적일까?</li>
-    <li>고양이는 정말 폭력적일까?</li>
-    <li>고양이는 정말 폭력적일까?</li>
-  </ul>
-  )
-}
+//   <ul>
+//     <li>댓글1</li>
+//     <li>댓글2</li>
+//     <li>댓글3</li>
+//   </ul>
+//   )
+// }
 
-// 메인 컴포넌트
-function Snippet() {
-return (
-  <>
-  <header>
-    <h1>Youtube</h1>
-  </header>
+// function Suggested() {
+// return (
+//   <ul>
+//     <li>고양이는 정말 폭력적일까?</li>
+//     <li>고양이는 정말 폭력적일까?</li>
+//     <li>고양이는 정말 폭력적일까?</li>
+//   </ul>
+//   )
+// }
 
-  <main>
-    <Content />
+// // 메인 컴포넌트
+// function Snippet() {
+// return (
+//   <>
+//   <header>
+//     <h1>Youtube</h1>
+//   </header>
 
-    <h2>Comments</h2>
-    <Comments/>
-  </main>
+//   <main>
+//     <Content />
 
-  <aside>
-    <h2>Suggested video</h2>
-    <Suggested/>
-  </aside>
-  </>
-  )
-}
+//     <h2>Comments</h2>
+//     <Comments/>
+//   </main>
+
+//   <aside>
+//     <h2>Suggested video</h2>
+//     <Suggested/>
+//   </aside>
+//   </>
+//   )
+// }
+
+
+
+
+/* 
+props
+컴포넌트에 전달되는 데이터
+*/
+
+// function Beer({beer}) {
+//   console.log(beer) // 전달받은 변수에 접근한다
+// return (
+//   <ul>
+//     <li>이름: {beer.name}</li>
+//     <li>원산지: {beer.origin}</li>
+//     <li>판매중: {beer.available ? "예" : "아니오"}</li>
+//   </ul>
+//   )
+// }
+
+// function Snippet() {
+
+//   // 지역 변수(선언된 함수 안에서만 접근할 수 있다)
+//   const irishBeer = {
+//   name: "Guinness",
+//   origin: "Ireland",
+//   available: false
+//   };
+
+//   return (
+//     <>
+//     <h2>Beer</h2>
+//     {/* Beer컴포넌트에게 irishBeer 변수를 전달한다*/}
+//     <Beer beer={irishBeer}/>
+//     </>
+//     )
+// }
+
+
+
+/*
+DATA, 컴포넌트 합성, props를 이용하여 왼쪽의 뷰를 완성해보세요
+*/
+// function Snippet() {
+// // 지역변수
+// const DATA = {
+// video: {
+// id: 'v0',
+// title: '고양이는 왜 액체일까?',
+// source: 'https://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg'
+// },
+
+// comments: [
+// { id: 'c0', content: '1빠' },
+// { id: 'c1', content: '2빠' },
+// { id: 'c2', content: '유치하게 등수는.. 3빠' },
+// ],
+
+// suggestedVideos: [
+//   { id: 's0', title: '고양이는 정말 폭력적일까?' },
+//   { id: 's1', title: '고양이는 정말 자기가 신이라고 생각할까?' },
+//   { id: 's2', title: '냥냥펀치는 얼마나 아플까?' },
+// ]
+// }
+
+// return (
+//   <>
+// <header>
+//   <h1>Youtube</h1>
+// </header>
+
+// <main>
+//   <Content video={DATA.video}/>
+
+//   <h2>댓글</h2>
+//   <Comments comments={DATA.comments}/>
+// </main>
+
+// <adide>
+//   <h2>추천 영상</h2>
+//   Suggested suggestedVideos={DATA.suggestedVideos}/>
+// </adide>
+// </>
+// )
+// }
+
+
+// // 영상 부분
+// function Content({video}) {
+// console.log(video) // 전달이 잘 되었는지 확인
+
+// return (
+//   <>
+//   <h2>{video.title}</h2>
+//   <img src={video.source} alt={video.title} width='100%' />
+//   </>
+//   )
+// }
+
+// // 댓글
+// function Comments({comments}) {
+// console.log(comments);
+
+// const commentList = comments.map(comment => (
+//   <li key={comment.id}>{comment.content}</li>
+//   ))
+
+//   return (
+//     <ul>
+//       {commentList}
+//     </ul>
+//     )
+// }
+
+// //추천 영상
+// function Suggested({suggestedVideos}) {
+// console.log(suggestedVideos);
+
+// const suggestedVideoList = suggestedVideos.map(video => (
+//   <li key={video.id}>{video.title}</li>
+//   ))
+
+//   return (
+//     <ul>
+//       {suggestedVideoList}
+//     </ul>
+//     )
+// 
+
+
+
+/*
+children props
+컴포넌트를 트리형태로 만들 수 있다
+*/
+
+// function Layout({children}) {
+// return (
+//   <>
+//   <h1>Instagram</h1>
+//   <nav>
+//     <ul>
+//       <li>Home</li>
+//       <li>Posts</li>
+//       <li>Profile</li>
+//     </ul>
+//   </nav>
+
+//   <main style={{padding: "1rem 0"}}>
+//     {/*Articles 컴포넌트를 나타낸다*/}
+//     {children}
+//   </main>
+
+//   <footer>
+//     <small>2023 &copy; Instagram</small>
+//   </footer>
+//   </>
+//   )
+// }
+
+// function Articles() {
+// return (
+//   <>
+//   <img src='https://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg'
+//   alt=''
+//   width='100%'
+//   />
+//   <p>
+//     <b>snoop_dogg</b>
+//     주인 나가서 한컷.
+//   </p>
+
+//   <small>1일 전</small>
+//   </>
+//   )
+// }
+
+// function Snippet() {
+// return (
+//   <Layout>
+//     <Articles/>
+//   </Layout>
+//   )
+// }
+
+
+
+
+/*
+useContext Hook(리액트가 제공하는 특별한 함수)
+하위 컴포넌트에 대해 데이터를 전달할 수 있다 (트리 구조)
+*/
+
+
+
+// const AuthContext = createContext();
+
+// // 인증 관리
+// function AuthProvider({ children }) {
+
+//   // 유저 정보 (지역 변수)
+//   const value = { username: "bunny" };
+
+//   return (
+//     <AuthContext.Provider value={value}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+// function Layout({ children }) {
+//   // 전달받은 value 객체에 접근
+//   const auth = useContext(AuthContext);
+
+//   console.log(auth);
+
+//   return (
+//     <>
+//       <h1>Instagram</h1>
+//       <nav>
+//         <ul>
+//           <li>Home</li>
+//           <li>Posts</li>
+//           <li>Profile</li>
+//         </ul>
+//       </nav>
+
+//       <p>안녕하세요, {auth.username}님!</p>
+
+//       <main style={{ padding: "1rem 0" }}>
+//         {/*Articles 컴포넌트를 나타낸다*/}
+//         {children}
+//       </main>
+
+//       <footer>
+//         <small>2023 &copy; Instagram</small>
+//       </footer>
+//     </>
+//   )
+// }
+ 
+// function Article() {
+
+// const auth = useContext(AuthContext);
+
+// console.log(auth);
+
+//   return (
+//     <>
+//       <img src='https://www.chemicalnews.co.kr/news/photo/202106/3636_10174_4958.jpg'
+//         alt=''
+//         width='100%'
+//       />
+//       <p>
+//         <b>snoop_dogg</b>
+//         주인 나가서 한컷.
+//       </p>
+
+//       <small>1일 전</small>
+//     </>
+//   )
+// }
+
+// function Snippet() {
+//   return (
+//     <AuthProvider>
+//       <Layout>
+//         <Articles />
+//       </Layout>
+//     </AuthProvider>
+//   )
+// }
+
+
+
+/*
+이벤트 처리
+*/
+
+// function Snippet() {
+// function handleClick() {
+// alert('lol');
+// }
+
+// // onEventName={eventHandler}
+
+// return (
+//   <>
+//   <h3>이벤트 처리</h3>
+//   <button onClick={handleClick}>클릭</button>
+//   </>
+//   )
+// }
+
+
+
+
+/*
+뷰 업데이트
+
+useState 사용 방법
+const [state, setState] = useState(initialValue)
+
+state: 컴포넌트 내의 변수 (상태)
+setState(newState): state를 업데이트하는 메서드
+initialValue: state의 초기값(최초 렌더링 시)
+*/
+
+
+
+// function Snippet() {
+// const [count, setCount] = useState(0);
+
+// return (
+//   <>
+//   <p>count: {count}</p>
+//   <button onClick={() => setCount(count + 1)}>+</button>
+//   </>
+//   )
+// }
+
+
+
+
