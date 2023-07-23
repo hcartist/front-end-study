@@ -185,6 +185,10 @@ export default function App() {
 
 
 
+
+//   // Q 리스트 렌더링
+//   //  내 답
+
 // function Snippet() {
 //   const beers = [
 //     { name: "Heineken", origin: "Netherlands", available: false },
@@ -192,9 +196,6 @@ export default function App() {
 //     { name: "Asahi", origin: "Japan", available: true }
 //   ]
 
-//   // Q 리스트 렌더링
-
-//   //  내 답
 // //   const beerList = beers.map((beer, index) => (
 
 // //     <table key={index}>
@@ -220,7 +221,16 @@ export default function App() {
 // // }
 
 
-// // 쌤 답
+
+
+// 쌤 답
+// function Snippet() {
+//   const beers = [
+//     { name: "Heineken", origin: "Netherlands", available: false },
+//     { name: "Guinness", origin: "Ireland", available: true },
+//     { name: "Asahi", origin: "Japan", available: true }
+//   ]
+
 // const beerRows = beers.map((beer, index) => (
 //   <tr key={index}>
 //     <td>{beer.name}</td>
@@ -254,7 +264,7 @@ export default function App() {
 /*
 컴포넌트
 
-1 컴포넌트 합서
+1 컴포넌트 합성
 2 props
 3 children props
 4 useContext Hook
