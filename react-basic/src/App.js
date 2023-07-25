@@ -1,4 +1,6 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
+
+import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'
 
 /*
 리액트 튜토리얼
@@ -660,17 +662,389 @@ useContext Hook(리액트가 제공하는 특별한 함수)
 
 // function Snippet() {
 
-//   function handleClick() {
+//   const [subscribed, setSubscribed] = useState(false);
 
-//   }
+//   console.log(subscribed) //state값 추적
+
 //   return (
 //     <>
 //       <h1>Subscribe Button</h1>
-//       <button onClick={()=>}>구독하기</button>
+//       {/* subscribed를 현재 상태의 반대값으로 업데이트한다*/}
+//       <button onClick={() => setSubscribed(!subscribed)}>{subscribed ? "구독중" : "구독하기"}</button>
 //     </>
 //   )
 // }
 
+
+
+
+// function Snippet() {
+//   const [count, setCount] = useState(0);
+
+//   // 지역함수 (선언된 컴포넌트 내에서만 접근 가능)
+//   function handleClick() {
+//     setCount(count + 1);
+//   }
+
+//   return (
+//     <>
+//       <p>count: {count}</p>
+//       {/* 합성된 컴포넌트에 지역함수를 전달한다 Props*/}
+//       <Button handleClick={handleClick} />
+//     </>
+//   )
+// }
+
+// function Button({ handleClick }) {
+//   // 합성된 컴포넌트에서 메인 컴포넌트의 state를 변화시킬 수 있다
+//   return (
+//     <button onClick={handleClick}>+</button>
+//   )
+// }
+
+
+
+
+/* 
+리액트 라우터(Router)
+요청주소와 적합한 컴포넌트를 연결한다
+
+1 라우터 기본
+2 인증이 적용된 라우터
+*/
+
+
+
+// 1 기본 라우터
+
+// 메인 컴포넌트
+// function Snippet() {
+//   return (
+//     <Router>
+//       <nav>
+//         <ul>
+//           <li>
+//             {/* Link컴포넌트의 to 속성: 요청주소 */}
+//             <Link to="/">Home</Link>
+//           </li>
+//           <li>
+//             <Link to="/about">About</Link>
+//           </li>
+//           <li>
+//             <Link to="/posts">Posts</Link>
+//           </li>
+//         </ul>
+//       </nav>
+
+//       {/* 요청주소와 일치하는 path를 가진 Route컴포넌트의 element가 렌더링된다 */}
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="about" element={<About />} />
+//         <Route path="posts" element={<Posts />} />
+//         {/* path에서 :매개변수 = 요청주소의 매개변수 */}
+//         <Route path="post/:postId" element={<Post />} />
+//         <Route path="*" element={<NotFound />} />
+//       </Routes>
+//     </Router>
+//   )
+// }
+
+// // 홈
+// function Home() {
+//   return <h1>Home</h1>
+// }
+
+// // 게시물 목록
+// function Posts() {
+//   return (
+//     <>
+//       <h1>Posts</h1>
+//       <ul>
+//         <li>
+//           <Link to="/post/p0">Post 1</Link>
+//         </li>
+//         <li>
+//           <Link to="/post/p1">Post 2</Link>
+//         </li>
+//       </ul>
+//     </>
+//   )
+// }
+
+// // 게시물 상세보기
+// function Post() {
+//   // useParams훅을 사용하여 요청주소의 매개변수에 접근할 수 있다
+//   const { postId } = useParams();
+
+//   return (
+//     <>
+//       <h1>Title</h1>
+//       <p>{postId}</p>
+//     </>
+//   )
+// }
+
+// // 소개
+// function About() {
+//   return <h1>About</h1>
+// }
+
+// // 페이지를 찾을 수 없습니다
+// function NotFound() {
+//   return <h1>NotFound</h1>
+// }
+
+
+
+
+// 2 인증이 적용된 라우터
+
+// 메인 컴포넌트
+// function Snippet() {
+//   return (
+//     <Router>
+//       <AuthProvider>
+//         <nav>
+//           <ul>
+//             <li>
+//               <Link to="/">Home</Link>
+//             </li>
+//             <li>
+//               <Link to="/posts">Posts</Link>
+//             </li>
+//           </ul>
+//         </nav>
+
+//         <AuthStatus />
+
+//         <Routes>
+//           <Route index element={<Home />} />
+//           <Route path="posts" element={<Posts />} />
+//           <Route path="post/:postId" element={
+//             <AuthRequired>
+//               <Post />
+//             </AuthRequired>
+//           } />
+//           <Route path="*" element={<NotFound />} />
+//         </Routes>
+//       </AuthProvider>
+//     </Router>
+//   )
+// }
+
+// // 인증 컨텍스트
+// const AuthContext = createContext();
+
+// // 유저 데이터 관리
+// function AuthProvider({ children }) {
+//   // 유저 데이터
+//   const [user, setUser] = useState(null);
+
+//   console.log(user) // user 추적
+
+//   const value = { user, setUser };
+
+//   // 하위 컴포넌트에 value 객체를 전달할 수 있다
+//   return (
+//     <AuthContext.Provider value={value}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }
+
+// // 인증 상태 메시지
+// function AuthStatus() {
+//   // value 객체 접근
+//   const { user, setUser } = useContext(AuthContext);
+
+//   return user ? (
+//     <p>
+//       Hi, {user}! {""}
+//       <button onClick={() => setUser(null)}> Log Out</button>
+//   </p>
+//   ) : (
+//     <p>Not logged in</p>
+//   )
+// }
+
+// // 인증 검사
+// function AuthRequired({children}) { 
+// const {user, setUser}= useContext(AuthContext);
+
+// // 로그인 처리
+// function handleSubmit(e) {
+// e.preventDefault(); // 새로고침 방지
+
+// const formData = new FormData(e.target);
+
+// // 서버요청
+
+// // formData.get("username") : 유저가 입력한 값에 접근
+
+// // user(state)를 유저(사용자)가 입력한 값으로 업데이트 한다
+// setUser(formData.get("username"));
+// }
+
+// if (!user) {
+// return (
+//   <form onSubmit={handleSubmit}>
+//     <h1>Login</h1>
+//     <input type="text" name="username" required />
+//     <button type="submit">Login</button>
+//   </form>
+//   )
+// }
+// // children은 Post컴포넌트이다
+// return children;
+// }
+
+
+// // 홈
+// function Home() { 
+// return <h1>Home</h1>
+// }
+
+// // 게시물 목록
+// function Posts() { 
+// return (
+//   <>
+//   <h1>Posts</h1>
+//   <ul>
+//     <li>
+//       <Link to="/post/p0">Post 1</Link>
+//     </li>
+//     <li>
+//       <Link to="/post/p1">Post 2</Link>
+//     </li>
+//   </ul>
+//   </>
+//   )
+// }
+
+// // 게시물 상세보기
+// function Post() { 
+// const {postId} = useParams();
+
+// return (
+//   <>
+//   <h1>Post</h1>
+//   <p>{postId}</p>
+//   </>
+//   )
+// }
+
+// // 페이지를 찾을 수 없습니다
+// function NotFound() {
+// return <h1> NotFound</h1>
+// }
+
+
+
+
+/*
+  데이터 요청하기
+
+  1 useEffect Hook
+  2 데이터 요청 실제 예시
+*/
+
+/*
+  useEffect 
+  리액트 앱에서 특정한 효과(effect)를 적용할 때 사용하는 Hook
+
+  useEffect(effect): 컴포넌트가 렌더링 될 때마다 이펙트를 실행한다
+  useEffect(effect, []): 최초 렌더링 시에만 이펙트를 실행한다
+  useEffect(effect, [dep]): 최초 렌더링 시 또는 dependency가 업데이트 될 때 이펙트를 실행한다
+*/
+
+// function Snippet() {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     // 콘솔에 렌더링 시간을 출력한다
+//     console.log('rendered at ' + new Date().toLocaleTimeString())
+//   }, [])
+
+//   return (
+//     <>
+//       <p>{count}</p>
+//       <button onClick={() => setCount(count + 1)}>+</button>
+//     </>
+//   )
+// }
+
+
+
+// 2 데이터 요청 실제 예시
+
+// 서버에 데이터를 요청하는 함수
+function fetchData() {
+  const DATA = {
+    username: 'snoop_dogg',
+    image: 'https://hips.hearstapps.com/hmg-prod/images/most-interesting-dog-meme-1546529364.png',
+    bio: '반갑네 인간'
+  }
+  
+  const promise = new Promise((res, rej) => {
+    // 데이터를 전송받는데 2초가 걸린다고 가정한다
+    setTimeout(() => {
+      // res(DATA)
+      rej({})
+    }, 2000)
+  })
+
+  return promise;
+}
+
+function Snippet() {
+  // 요청 실패 처리
+  const [error, setError] = useState(null);
+  // 로딩 상태 처리
+  const [isLoaded, setIsLoaded] = useState(false);
+  // 프로필을 저장할 변수
+  const [profile, setProfile] = useState(null);
+
+  // useEffect는 비동기적으로 작동한다 -> 가장 마지막에 실행된다
+  useEffect(() => {
+    // 서버에 데이터 요청
+    fetchData()
+      .then(data => { // 요청 성공 시 데이터 처리
+        setProfile(data) // 응답데이터를 profile변수에 저장한다
+      })
+      .catch(error => { // 요청 실패 시 에러 처리
+        setError(error)
+      })
+      .finally(() => setIsLoaded(true)) // 성공/실패와 관계없이 항상 실행되는 코드
+
+      // state가 업데이트되면 해당 state가 선언된 컴포넌트가 다시 렌더링 된다
+  }, [])
+
+  if (error) {
+    return <p>failed to fetch profile</p>
+  }
+
+  if (!isLoaded) {
+    return <p>fetching profile...</p>
+  }
+
+  return (
+    <>
+      <h1>Profile</h1>
+      <img
+        src={profile.image}
+        alt={profile.username}
+        style={{
+          width: '150px',
+          height: '150px',
+          objectFit: 'cover',
+          borderRadius: '50%',
+        }}
+      />
+      <h3>{profile.username}</h3>
+      <p>{profile.bio}</p>
+    </>  
+  )
+}
 
 
 
