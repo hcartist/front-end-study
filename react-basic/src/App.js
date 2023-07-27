@@ -978,73 +978,78 @@ useContext Hook(리액트가 제공하는 특별한 함수)
 // 2 데이터 요청 실제 예시
 
 // 서버에 데이터를 요청하는 함수
-function fetchData() {
-  const DATA = {
-    username: 'snoop_dogg',
-    image: 'https://hips.hearstapps.com/hmg-prod/images/most-interesting-dog-meme-1546529364.png',
-    bio: '반갑네 인간'
-  }
-  
-  const promise = new Promise((res, rej) => {
-    // 데이터를 전송받는데 2초가 걸린다고 가정한다
-    setTimeout(() => {
-      // res(DATA)
-      rej({})
-    }, 2000)
-  })
+// function fetchData() {
+//   const DATA = {
+//     username: 'snoop_dogg',
+//     image: 'https://hips.hearstapps.com/hmg-prod/images/most-interesting-dog-meme-1546529364.png',
+//     bio: '반갑네 인간'
+//   }
 
-  return promise;
-}
+//   const promise = new Promise((res, rej) => {
+//     // 데이터를 전송받는데 2초가 걸린다고 가정한다
+//     setTimeout(() => {
+//       // res(DATA)
+//       rej({})
+//     }, 2000)
+//   })
 
-function Snippet() {
-  // 요청 실패 처리
-  const [error, setError] = useState(null);
-  // 로딩 상태 처리
-  const [isLoaded, setIsLoaded] = useState(false);
-  // 프로필을 저장할 변수
-  const [profile, setProfile] = useState(null);
+//   return promise;
+// }
 
-  // useEffect는 비동기적으로 작동한다 -> 가장 마지막에 실행된다
-  useEffect(() => {
-    // 서버에 데이터 요청
-    fetchData()
-      .then(data => { // 요청 성공 시 데이터 처리
-        setProfile(data) // 응답데이터를 profile변수에 저장한다
-      })
-      .catch(error => { // 요청 실패 시 에러 처리
-        setError(error)
-      })
-      .finally(() => setIsLoaded(true)) // 성공/실패와 관계없이 항상 실행되는 코드
+// function Snippet() {
+//   // 요청 실패 처리
+//   const [error, setError] = useState(null);
+//   // 로딩 상태 처리
+//   const [isLoaded, setIsLoaded] = useState(false);
+//   // 프로필을 저장할 변수
+//   const [profile, setProfile] = useState(null);
 
-      // state가 업데이트되면 해당 state가 선언된 컴포넌트가 다시 렌더링 된다
-  }, [])
+//   // useEffect는 비동기적으로 작동한다 -> 가장 마지막에 실행된다
+//   useEffect(() => {
+//     // 서버에 데이터 요청
+//     fetchData()
+//       .then(data => { // 요청 성공 시 데이터 처리
+//         setProfile(data) // 응답데이터를 profile변수에 저장한다
+//       })
+//       .catch(error => { // 요청 실패 시 에러 처리
+//         setError(error)
+//       })
+//       .finally(() => setIsLoaded(true)) // 성공/실패와 관계없이 항상 실행되는 코드
 
-  if (error) {
-    return <p>failed to fetch profile</p>
-  }
+//     // state가 업데이트되면 해당 state가 선언된 컴포넌트가 다시 렌더링 된다
+//   }, [])
 
-  if (!isLoaded) {
-    return <p>fetching profile...</p>
-  }
+//   if (error) {
+//     return <p>failed to fetch profile</p>
+//   }
 
-  return (
-    <>
-      <h1>Profile</h1>
-      <img
-        src={profile.image}
-        alt={profile.username}
-        style={{
-          width: '150px',
-          height: '150px',
-          objectFit: 'cover',
-          borderRadius: '50%',
-        }}
-      />
-      <h3>{profile.username}</h3>
-      <p>{profile.bio}</p>
-    </>  
-  )
-}
+//   if (!isLoaded) {
+//     return <p>fetching profile...</p>
+//   }
+
+//   return (
+//     <>
+//       <h1>Profile</h1>
+//       <img
+//         src={profile.image}
+//         alt={profile.username}
+//         style={{
+//           width: '150px',
+//           height: '150px',
+//           objectFit: 'cover',
+//           borderRadius: '50%',
+//         }}
+//       />
+//       <h3>{profile.username}</h3>
+//       <p>{profile.bio}</p>
+//     </>
+//   )
+// }
+
+
+
+
+
 
 
 

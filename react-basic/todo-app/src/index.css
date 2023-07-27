@@ -1,0 +1,8 @@
+/* 테일윈드 명령어 선언 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+background-color: #eee;
+}
