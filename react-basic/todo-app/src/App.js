@@ -48,13 +48,54 @@ export default function App() {
   };
 
   //할일을 삭제하는 함수
-  function deleteTask(id) { };
+  function deleteTask(id) { 
+  console.log(id); // id 확인
+
+  // tasks에서 전달받은 id와 일치하는 tak를 제외한 
+  // 나머지 task를 리턴한다
+  const remainingTasks = tasks.filter(task => task.id !== id);
+
+  saveDoc(remainingTasks);
+
+  // tasks를 업데이트한다
+  setTasks(remainingTasks);
+  };
 
   // 할일의 완료상태를 수정하는 함수
-  function toggleTaskCompleted(id) { };
+  function toggleTaskCompleted(id) {
+  console.log(id); // id 확인
+
+  // tasks에서 전달받은 id와 일치하는 task의 completed를 
+  // 현재상태의 반대로 수정한다
+  const updatedTasks = tasks.map(task => {
+  if (task.id === id) {
+  return { ...task, completed: !task.completed }
+  }
+  return task;
+  })
+
+  // 로컬 스토리지 동기화
+  saveDoc(updatedTasks);
+
+  // tasks를 updatedTasks로 업데이트 한다
+  setTasks(updatedTasks);
+  };
 
   // 할일을 수정하는 함수
-  function editTask(id, newName) { };
+  function editTask(id, newName) { 
+  console.log(id, newName)
+
+  const editedTask = tasks.map(task => {
+  if (task.id === id) {
+  return { ...task, name: newName }
+  }
+  return task;
+  })
+
+  saveDoc(editedTask);
+
+  setTasks(editedTask);
+  };
 
   // 필터버튼
   const filterButtons = FILTER_NAMES.map(name => (
