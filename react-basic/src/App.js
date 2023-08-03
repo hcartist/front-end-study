@@ -163,26 +163,26 @@ export default function App() {
 
 // 리스트렌더링
 
-// function Snippet() {
-// const beers = [
-// { name: "Heineken", origin: "Netherlands"},
-// { name: "Guinness", origin: "Ireland"},
-// { name: "Asahi", origin: "Japan"}
-// ]
+function Snippet() {
+const beers = [
+{ name: "Heineken", origin: "Netherlands"},
+{ name: "Guinness", origin: "Ireland"},
+{ name: "Asahi", origin: "Japan"}
+]
 
-// const beerList = beers.map((beer, index) => (
-//   <li key={index}>{beer.name}, {beer.origin}</li>
-//   ))
+const beerList = beers.map((beer, index) => (
+  <li key={index}>{beer.name}, {beer.origin}</li>
+  ))
 
-//   return (
-//     <>
-//     <h3>세계맥주</h3>
-//     <ul>
-//       {beerList}
-//       </ul>
-//       </>
-//     )
-// }
+  return (
+    <>
+    <h3>세계맥주</h3>
+    <ul>
+      {beerList}
+      </ul>
+      </>
+    )
+}
 
 
 
