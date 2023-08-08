@@ -51,7 +51,7 @@ export default function App() {
   function deleteTask(id) { 
   console.log(id); // id 확인
 
-  // tasks에서 전달받은 id와 일치하는 tak를 제외한 
+  // tasks에서 전달받은 id와 일치하는 task를 제외한 
   // 나머지 task를 리턴한다
   const remainingTasks = tasks.filter(task => task.id !== id);
 
@@ -108,7 +108,7 @@ export default function App() {
   ))
 
   // 할일 목록
-  const taskList = tasks.filter(FILTER_MAP[filter]).map(task => (
+  const taskList = tasks.map(task => (
     // 컴포넌트 재사용
     <Todo
       key={task.id}
