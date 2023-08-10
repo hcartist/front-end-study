@@ -11,6 +11,7 @@ const FILTER_MAP = {
 
 // Object.keys(객체): 객체의 속성이름을 문자열 배열로 리턴한다
 const FILTER_NAMES = Object.keys(FILTER_MAP);
+console.log(FILTER_NAMES);
 
 function saveDoc(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -108,7 +109,7 @@ export default function App() {
   ))
 
   // 할일 목록
-  const taskList = tasks.map(task => (
+  const taskList = tasks.filter(FILTER_MAP[filter]).map(task => (
     // 컴포넌트 재사용
     <Todo
       key={task.id}
