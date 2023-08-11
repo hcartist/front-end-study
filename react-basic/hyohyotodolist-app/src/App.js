@@ -1,126 +1,255 @@
 import { useState } from 'react';
 
-// 저장
-function saveDoc() {
-  localStorage.setItem("name", JSON.stringify());
+
+
+// 저장 영역
+function saveDoc(tasks) {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+const initialTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+// 저장 영역
 
-// 초기name
-const initialName = JSON.stringify(localStorage.getItem("name") || "[]")
 
-// App 구조
+// 기본 구조 시작
 export default function App() {
 
-  const [name, setName] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(initialTasks);
+  console.log(tasks);
 
-  console.log(tasks) // 키스테이트 추적
 
-  function handleSubmit(e) {
-    e.preventDefault();
 
-    const newTask = {
-      id: Date.now(),
-      name: name,
-      completed: false
+  function addTask(name) {
+    const newTask = { id: `todo-${Date.now()}`, name, completed: false };
+
+    const updatedTasks = [...tasks, newTask];
+
+    saveDoc(updatedTasks);
+
+    setTasks(updatedTasks);
+  };
+
+
+
+  function Form({ addTask }) {
+    const [name, setName] = useState('');
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      addTask(name);
+      setName("")
     }
-    setTasks([...tasks, newTask])
-    setName("")
+
+    return (
+      <form
+        onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className='border p-2'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          autoComplete="off"
+        />
+        <button
+          type="submit"
+          className='border'>
+          추가하기
+        </button>
+      </form>
+    )
   }
 
-  function deleteTasks(id) {
-    const deleteTasks3 = tasks.filter(task => task.id !== id)
-    setTasks(deleteTasks3)
 
-    // 1. click한 task의 id를 가져온다
-    // 2. taks(걍 전체 tasks) filter에 조건을 넣는다(조건내용해석: task(전체 tasks의 개별 task) => task.id(그 개별 task의 id)와 id(내가 click한 ^해당^ task의 id)를 비교한다.) !== 같지 않음을 확인
-    // 3. 내가 선택한 task의 id랑 다른 task.id들만 남긴다 > 이 내용이 filter의 조건
-    // 4. 해당 filter를 deleteTasks3에 적용
-    // 5. deleteTasks > setTasks > tasks
-    // 6. tasks > taskList의 tasks.map에 리턴됨
 
-    // filter예제 w3school filter 예제 확인하기
+  function Todo({ id, name, completed, deleteTask, toggleTaskCompleted, editTask }) {
+    const [isEditing, setIsEditing] = useState(false);
+    const [newName, setNewName] = useState(name);
+    console.log(setIsEditing)
+    function handleSubmit(e) {
+      e.preventDefault();
+      editTask(id, newName);
+      setIsEditing(false);
+    }
+
+    function handleCancel() {
+      setIsEditing(false)
+      setNewName(name)
+    }
+
+    const viewTemplate = (
+      <>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              className='peer hidden'
+              checked={completed}
+              onChange={() => toggleTaskCompleted(id)}
+            />
+            <span
+              className='peer-checked:line-through'
+            >{name}</span>
+          </label>
+        </div>
+
+        <div>
+          <button
+            onClick={() => setIsEditing(true)}>
+            수정
+          </button>
+
+          <button
+            onClick={() => deleteTask(id)}
+          >삭제</button>
+        </div>
+      </>
+    )
+
+    const editingTemplate = (
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="border p-2"
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+        />
+
+        <div>
+          <button
+            type="button"
+            onClick={handleCancel}>
+            취소
+          </button>
+
+          <button
+            type="submit"
+            disabled={name === newName}>
+            저장
+          </button>
+        </div>
+      </form>)
+
+    return (
+      <li className="mb-4">
+        {isEditing ? editingTemplate : viewTemplate}
+      </li>
+    )
   }
 
-  function Done_underlin(id) {
-    console.log(id);
 
-    const Done_underlin2 = tasks.map(task => {
+
+  function toggleTaskCompleted(id) {
+    console.log(id)
+    const updatedTasks = tasks.map(task => {
       if (task.id === id) {
         return { ...task, completed: !task.completed }
       }
       return task;
     })
 
-    setTasks(Done_underlin2);
+    saveDoc(updatedTasks);
+
+    setTasks(updatedTasks);
   }
 
 
-  const taskList = tasks.map(task => (
-    // taks = tasks(usestate에 있는거)의 개개별 task를 지칭
 
-    <div key={task.name}
-      className='flex max-w-[25rem] mt-2 justify-between justify-center items-center mb-8'
-    >
-      <p className={task.completed && "line-through"}>{task.name}</p>
-      <div>
-        <button
-          onClick={() => deleteTasks(task.id)}
-          className='p-2 font-semibold text-zinc-300 hover:text-black'
-        >Delete</button>
+  function deleteTask(id) {
+    console.log(id)
 
-        <button
-          className="p-2 font-semibold text-zinc-300 hover:text-red-500"
-          onClick={() => Done_underlin(task.id)}
-        >
-          Done</button>
-      </div>
-    </div>
+    const remainingTasks = tasks.filter(task => task.id !== id);
+
+    saveDoc(remainingTasks)
+
+    setTasks(remainingTasks)
+  }
+
+
+
+  function editTask(id, newName) {
+    console.log(id, newName)
+
+    const editedTask = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, name: newName }
+      }
+      return task;
+    })
+
+    saveDoc(editedTask);
+
+    setTasks(editedTask);
+  };
+
+
+
+  const FILTER_MAP = {
+    All: () => true,
+    Done: (task) => task.completed,
+    Active: (task) => !task.completed
+  }
+
+
+
+  const [filter, setFilter] = useState("All");
+
+
+
+  const FILTER_NAMES = Object.keys(FILTER_MAP);
+
+
+
+  const filterButtons = FILTER_NAMES.map(name => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={filter === name} // 필터와 name을 비교
+      setFilter={setFilter}
+    />
   ))
+
+
+
+  function FilterButton({ name, isPressed, setFilter }) {
+    return (
+      <button
+        className={"border-2 border-black p-1 w-1/3 border font-semibold " +
+          (isPressed && "bg-black text-white")}
+        onClick={() => setFilter(name)}
+      >
+        {name}
+      </button>
+    )
+  };
+
+
+
+  const taskList = tasks.filter(FILTER_MAP[filter]).map(task => (
+    <Todo
+      key={task.id}
+      id={task.id}
+      name={task.name}
+      completed={task.completed}
+      deleteTask={deleteTask}
+      editTask={editTask}
+      toggleTaskCompleted={toggleTaskCompleted}
+    />
+  ))
+
 
 
   return (
     <>
-      {/* 전체 대지(투명) */}
-      <div className="h-[40rem] w-[25rem]">
+      <div>할일 목록</div>
 
-        {/* 날짜*/}
-        <h1 className="text-3xl font-semibold p-3">2023/08/03</h1>
+      <Form addTask={addTask} />
 
-        {/* name 대지 */}
-        <div className="p-4 m-auto h-[40rem] bg-white drop-shadow-2xl rounded-[1rem]">
-          {/* name count */}
-          <h1 className="text-base font-semibold mb-3"><b className="text-cyan-500">{taskList.length}</b>개의 일이 남았습니다.</h1>
+      <div>{filterButtons}</div>
 
-          {/* form */}
-          <form className="flex" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="m-auto w-full p-2.5 p-2 border"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button className="bg-cyan-400 p-2 text-white font-semibold hover:bg-violet-600"
-              type='submit'
-            >add</button>
-          </form>
+      <div>{taskList.length}개 남았습니다</div>
 
-          {/* nameList */}
-          <div className='h-[30rem] overflow-scroll'>
-            <ul>
-              {taskList}
-            </ul>
-          </div>
-
-
-          <div className='flex flex-nowrap gap-1'>
-            <button className='w-full mt-3 h-[2rem] justify-center items-center bg-cyan-400 text-white font-semibold'>All</button>
-            <button className='w-full mt-3 h-[2rem] justify-center items-center bg-red-500 text-white font-semibold'>Done</button>
-          </div>
-        </div>
-      </div>
-
-
+      <ul>
+        {taskList}
+      </ul>
     </>
   )
 }
