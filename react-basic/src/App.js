@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import { useContext, createContext, useState, useEffect } from "react";
 
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'
+=======
+>>>>>>> eb1fbc80b7a2bca09556473c8957caeaba51c5a9
 
 /*
 리액트 튜토리얼
@@ -55,6 +58,7 @@ export default function App() {
 }
 
 
+<<<<<<< HEAD
 // function Snippet() {
 //   return (
 //     <form>
@@ -1053,3 +1057,19 @@ useContext Hook(리액트가 제공하는 특별한 함수)
 
 
 
+=======
+function Snippet() {
+  return (
+    <form>
+      <h1>Goole</h1>
+      <input
+        type="search"
+        className="class1 class2"
+        style={{ padding: "0.5rem", width: '20rem' }}
+        placeholder="구글 검색"
+        autoComplete="off"
+      />
+    </form>
+  )
+};
+>>>>>>> eb1fbc80b7a2bca09556473c8957caeaba51c5a9
