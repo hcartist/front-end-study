@@ -23,8 +23,8 @@ const postSchema = new Schema({
 // 1 보여주기용 날짜
 postSchema.virtual('displayDate').get(function () {
     const displayDate = DateTime
-    .fromJSDate(this.createdAt) // creatAt > 데이터베이스에 저장되는 생성일
-    .toLocaleString(DateTime.DATE_MED);
+        .fromJSDate(this.createdAt) // creatAt > 데이터베이스에 저장되는 생성일
+        .toLocaleString(DateTime.DATE_MED);
 
     return displayDate;
 })

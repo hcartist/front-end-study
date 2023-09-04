@@ -1,0 +1,227 @@
+*하나씩 다운할때마다 터미널 종료하고 다시 시작하기
+
+
+
+# 도큐먼트 지향 데이터베이스 다운로드
+mongodb 다운로드
+mongod 설치 확인(mongod --version)
+(mongodb compass창 뜨는거 확인 > connect누르고 URL부분 connect누르면 연결)
+
+
+# API 플랫폼 다운로드
+postman 다운로드
+(로그인 후 연결)
+
+
+# 환경변수설정
+(노트북설정 > 시스템 환경변수 들어가기(검색창에 치면 나옴) > 환경변수 버튼 > 시스템변수에서 path누르고 편집 버튼 > 몽고디비 경로 복사해서 새로만들기 버튼 클릭 후 붙여넣기 > 확인)
+
+
+# 비주얼스튜디오에 프젝폴더 만들기(만들고싶은거)
+터미널에서 프젝폴더로 이동
+
+
+# node.js를 위한 표준 서버 웹 프레임워크 다운로드
+express 다운로드
+express 생성기 설치하는 명령어(npm install express-generator -g)
+express설치 확인(npm list -g)
+프로젝트 생성하는 명령어 (express --no-view server)
+
+
+
+# 프로젝트에 필요한 패키지 설치
+express - 프레임워크
+debug - 버그를 관리하는 패키지
+cookie-parser - 쿠키수집
+http-errors - 에러 처리
+morgan - 기록(서버와 클라이언트가 주고받은 통신내용)을 출력하고 저장하는 패키지
+helmet - HTTP요청 헤더의 보안 관리
+compression - 압축 기능 제공
+mongoose - 몽고DB용 ODM 도구 및 데이터베이스 연결 관리
+multer - 파일 처리
+passport - 인증 기능 제공
+passport-jwt - JWT(로그인에 사용되는 토근jsonwebtoken) 기반의 인증 기능 제공
+jsonwebtoken - JWT 관련된 기능 제공
+express-validator - 폼 데이터의 유효성 검사
+luxon - 날짜 데이터 가공
+dotenv - 환경 변수 사용 환경을 제공한다
+cors - CORS(Cross Origin Resource Sharing) 교차 출처 리소스 공유 기능을 제공한다, 서버와 서버가 통신할 수 있는 기능 제공
+
+터미널 프젝/서버 경로로 들어간후 설치
+(npm install express debuh cookie-parser ...)
+package.json에서 잘 설치됬는지 확인
+
+패키지 잘못설치했을경우 전체 삭제후 다시 설치(패키지설치 > npm uninstall + 삭제할 패키지)
+
+
+
+# 설정
+.env설정 폴더 만들기(.<비공개 파일이라는 뜻)
+(MONGODB_URI="mongodb://127.0.0.1:27017/instagram_clone_master"
+FILE_URL="http://127.0.0.1:3000/api/files"
+SECRET="shhhh")
+
+
+
+# App.js 내용 작성 (시작)
+
+
+
+# MVC 패턴
+소프트웨어 개발 디자인 패턴 중 하나
+M (Mddel) - 데이터 처리 부분
+V (View) - UI의 역할. 보여지는 부분
+C (Controller) - 로직 처리 부분
+
+
+
+# API 서버의 대표적인 역할
+1 인증 처리
+2 데이터 가공
+
+
+
+# 프젝폴더에서 models폴더 만들기
+그 안에 User.js, Post.js, Follow.js, Comment.js, Like.js 폴더 만들기 - 내용 작성
+
+
+
+# auth (authorization), authentication
+authorization - 허가
+authentication - 인증 처리
+인증처리 미들웨어
+
+
+
+# auth 폴더, auth.js 만들기 - 내용 작성
+
+
+
+# files
+유저가 업로드한 파일을 저장할 경로
+avatar - 프로필 사진 저장
+photos - 게시물 사진 저장
+
+
+#  서버에 files폴더, 그 안에 avatar, photos 폴더 생성
+avatar, photos 폴더 안에 필요한 사진들 다운로드
+
+
+# utils 폴더 만들기(미들웨어 파일을 저장하는 경로)
+loginValidator.js(로그인폼유효성검사), signUpValidator.js(회원가입폼유효성검사), upload.js(파일처리하는 미들웨어)
+
+
+# signUpvalidator 내용 작성
+
+
+# HTTP 상태코드 (응답코드)
+
+
+# 미들웨어는 다음의 3가지 객체/함수에 접근할 수 있다
+req (requset, 요청)
+res (response, 응답)
+next - 다음 미들웨어처리, 에러 처리에 사용된다
+
+
+# loginVaildator 내용 작성
+
+
+# upload 내용 작성
+
+
+# 서버에 seeds.js 생성(샘플파일 사용자-아무개씨 같은거) - 내용 작성
+
+# query - 데이터베이스에 요청하는 것, api가 서버한테 일 시키는 것
+
+
+# 몽고디비 compass에 연결 (seed 데이터 생성 명령어)
+몽고디비 compass 연다
+비주얼스튜디오터미널에 차례대로 입력한다
+(cd server
+node seed mongodb://127.0.0.1:27017/instagram-clone
+유저인자: 데이터베이스의 주소
+
+
+# 몽고DB (NoSQL)
+- 컬렉션:
+관계형 데이터베이스의 테이블에 해당하는 개념
+데이터를 분류하는 기준이 된다
+
+- 도큐먼트:
+각 데이터를 말한다. 관계형 데이터베이스의 튜플(Tuple) 또는 Row에 해당하는 개념
+
+# postman에 연결한다
+package.json에 서버 시작 명령어 넣어준 후
+터미널에 (npm run devstart) 입력.
+instagram-clone 컬렉션 만들어주고 그 안에 index만들어준뒤
+(localhost:3000/api)라고 검색창에 send한다
+
+
+# 프젝폴더에 controller 폴더, userController.js 만든다
+
+
+# postman에 user 만들어주고 post로 주소 연결한다
+
+
+# 팔로잉 도큐먼트의 작동원리
+
+예시
+
+인스타그램의 전체회원: 8명
+뉴진스
+진태민
+박형우
+한효찬
+양나현
+김강일
+노영균
+임승욱
+
+태민, 형우, 효찬, 나현은 뉴진스를 팔로우한다
+
+도큐먼트1
+user: 태민 following: 뉴진스
+도큐먼트2
+user: 형우 following: 뉴진스
+도큐먼트3
+user:효찬 following: 뉴진스
+도큐먼트4
+user: 나현 following: 뉴진스
+
+도큐먼트5
+user: 강일 following: 진태민
+도큐먼트6
+user: 영균 following: 진태민
+도큐먼트7
+user: 승욱 following: 진태민
+도큐먼트8
+user: 강일 following: 뉴진스
+
++ user: 형우 following: 진태민
+
+
+
+구글 뉴스
+
+limit: 10
+서버가 한번 데이터를 전송할 때 보내는 도큐먼트의 개수
+
+구글 뉴스 데이터베이스
+1번부터 100번까지의 도큐먼트가 있다
+
+skip - 서버가 데이터를 전송할 때 건너뛰는 도큐먼트의 수
+
+
+
+뉴진스 게시물 A
+뉴진스 게시물 B
+
+Likes컬렉션
+user: 태민 post: A게시물
+user: 태민 post: B게시물
+user: 형우 post A게시물
+
+
+A게시물에 댓글의 갯수를 어떻게 알 수 있을까요?
+post가 A게시물인것의 갯수를 센다
+

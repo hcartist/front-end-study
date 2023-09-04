@@ -1,0 +1,28 @@
+git 연결 (git add./git commit -m "8/31"/git push)
+
+
+
+
+클라이언트 개발
+
+
+client 설치
+npx create-react-app client 명령어
+
+설치 완료 후 client 경로로 이동
+cd client
+
+클라이언트에 설치할 패키지
+react-router-dom - 리액트 라우터
+tailwindcss - 테일윈드
+npm install react-router-dom tailwindcss 명령어
+
+테일윈드 설정파일 생성 명령어
+npx tailwindcss init
+
+
+src
+- auth: 인증 관리 컴포넌트
+- service: 서버 요청 라이브러리
+- utils/validator: 클라이언트측 폼데이터 검사 라이브러리
+

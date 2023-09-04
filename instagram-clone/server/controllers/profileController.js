@@ -127,7 +127,7 @@ exports.follow = async (req, res, next) => {
             .findOne({ username: req.params.username }, profileFields)
         // params(파라미터)나 query는 클라이언트가 서버에 전송하는 데이터, findOne(models findOne에서 조건에 해당하는 한개의 도큐먼트를 검색한다)
 
-        // 프로필이 존재하지 않을 경우
+        // 유저가 존재하지 않을 경우
         if (!profile) {
             const err = new Error('Profile is not found')
             err.status = 404; // 클라이언트가 요청한 리소스를 서버가 가지고 있지 않을 때 404처리
