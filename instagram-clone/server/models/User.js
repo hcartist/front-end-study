@@ -7,10 +7,10 @@ const Post = require("./Post");
 // 유저스키마
 // 설정할 데이터의 제약 조건
 const userSchema = new Schema({
-    email: { type: String, minLegth: 5 },
-    password: { type: String, minLegth: 5 },
+    email: { type: String, minLength: 5 },
+    password: { type: String, minLength: 5 },
     salt: { type: String },
-    username: { type: String, minLegth: 3, required: true }, // required > 필수라는 뜻
+    username: { type: String, minLength: 3, required: true }, // required > 필수라는 뜻
     name: { type: String },
     avatar: { type: String, default: 'default.png' },
     bio: { type: String }
