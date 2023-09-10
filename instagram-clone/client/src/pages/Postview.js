@@ -1,1 +1,1 @@
-export default function Postview() {};
+export default function PostView() {};

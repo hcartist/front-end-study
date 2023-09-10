@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
         } else { // 로그아웃
             localStorage.removeItem('user'); // 로그아웃했을때 로컬 스토리지에서 user데이터 삭제
         }
-    }, [user]) // useEffect의 dependency [user], 로그인한 유저 상태 말하는 듯
+    }, [user]) // useEffect의 dependency [user], 로그인한 유저 상태 말하는 듯, 저 [user]의 상태가 변할 때 useEffect가 실행된다는 뜻
 
     const value = { user, setUser }; // AuthProvider에서 선언된 지역변수인 user와 setUser를 업데이트하는 메서드를 value 객체에 저장
 
