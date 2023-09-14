@@ -1,12 +1,12 @@
 // 서버 요청 라이브러리
 
 // 서버 주소
-const server = "http://localhost:3000/api"
+const server = "http://localhost:3000/api";
 
 // localStrage에 저장된 토큰을 가져오는 함수
 function getBearerToken() {
     const user = JSON.parse(localStorage.getItem("user"));
-
+    
     return 'Bearer ' + user.access_token; // Bearer는 로컬스토리지에 저장된 토큰을 가져오는 함수
 }
 
@@ -44,7 +44,7 @@ export async function signIn(email, password) { //email, password > 파라미터
         throw new Error(`${res.status} ${res.statusText}`);
     }
 
-    return await res.json();
+    return await res.json(); // 에러없을 경우 응답객체를 자바스크립트객체(json)으로 변환해서 리턴
 }
 
 
@@ -68,25 +68,25 @@ export async function getFeed(limit, skip) { // query의 limit과 skip을 함께
 
 // 2 게시물 한개 가져오기 요청
 export async function getPost(id) {
-    const res = await fetch(`${server}/posts${id}`, {
-        headers: {
-            'Authorization': getBearerToken()
-        }
+    const res = await fetch(`${server}/posts/${id}`, {
+      headers: { 
+        'Authorization': getBearerToken() 
+      }
     });
 
     if (!res.ok) {
         throw new Error(`${res.status} ${res.statusText}`);
+      }
+    
+      return await res.json();
     }
-
-    return await res.json();
-}
 
 // 3 게시물 생성 요청
 export async function createPost(formData) { // formData를 인자로 받음, 파일을 전송할때 쓰는 포멧
     const res = await fetch(`${server}/posts`, {
         method: "POST",
-        headers: {
-            "Authorizaion": getBearerToken()
+        headers: { 
+          "Authorization": getBearerToken() 
         },
         body: formData // 파일 전송 json포멧으로는 파일 전송 불가. 따라서 formData로 전송하는 것
     })
@@ -103,7 +103,7 @@ export async function deletePost(id) {
     const res = await fetch(`${server}/posts/${id}`, {
         method: 'DELETE',
         headers: {
-            'Authorizaion': getBearerToken()
+            'Authorization': getBearerToken()
         }
     })
 
@@ -153,7 +153,7 @@ export async function unlikePost(id) {
 export async function getComments(id) {
     const res = await fetch(`${server}/posts/${id}/comments`, {
         headers: {
-            'Authorizaion': getBearerToken
+            'Authorization': getBearerToken()
         }
     });
 
@@ -169,7 +169,7 @@ export async function createComment(id, content) {
     const res = await fetch(`${server}/posts/${id}/comments`, {
         method: "POST",
         headers: {
-            "Authorizaion": getBearerToken(),
+            "Authorization": getBearerToken(),
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ content })
@@ -187,7 +187,7 @@ export async function deleteComment(id) {
     const res = await fetch(`${server}/posts/comments/${id}`, {
         method: 'DELETE',
         headers: {
-            'Authorizaion': getBearerToken()
+            'Authorization': getBearerToken()
         }
     })
 
@@ -203,11 +203,11 @@ export async function deleteComment(id) {
 
 // 1 프로필 수정 요청
 export async function updateProfile(editedProfile) {
-    const res = await fetch(`${server}/profiles`, {
+    const res = await fetch(`${server}/users/user`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         },
         body: JSON.stringify(editedProfile)
     })
@@ -221,10 +221,10 @@ export async function updateProfile(editedProfile) {
 
 // 2 프로필 사진 수정 요청
 export async function updateAvatar(formData) { // file이기 때문에 formData
-    const res = await fetch(`${server}/profiles`, {
+    const res = await fetch(`${server}/users/user`, {
         method: "PUT",
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         },
         body: formData
     })
@@ -240,7 +240,7 @@ export async function updateAvatar(formData) { // file이기 때문에 formData
 export async function getProfiles(username) { // 검색때 사용할 예정, username 파라미터 사용
     const res = await fetch(`${server}/profiles/?username=${username}`, { // username query
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -255,7 +255,7 @@ export async function getProfiles(username) { // 검색때 사용할 예정, use
 export async function getProfile(username) {
     const res = await fetch(`${server}/profiles/${username}`, { // username 파라미터
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -270,7 +270,7 @@ export async function getProfile(username) {
 export async function getTimeline(username) {
     const res = await fetch(`${server}/posts/?username=${username}`, { // 게시물 요청에서 username query가 있으면 타임라인, query가 없으면 전체 게시물 가져오기
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -285,7 +285,7 @@ export async function getTimeline(username) {
 export async function getFollowers(username) {
     const res = await fetch(`${server}/profiles/?followers=${username}`, {
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -300,7 +300,7 @@ export async function getFollowers(username) {
 export async function getFollowingUsers(username) {
     const res = await fetch(`${server}/profiles/?following=${username}`, {
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -316,7 +316,7 @@ export async function follow(username) {
     const res = await fetch(`${server}/profiles/${username}/follow`, {
         method: 'POST',
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 
@@ -332,7 +332,7 @@ export async function unfollow(username) {
     const res = await fetch(`${server}/profiles/${username}/unfollow`, {
         method: 'DELETE',
         headers: {
-            "Authorizaion": getBearerToken()
+            "Authorization": getBearerToken()
         }
     })
 

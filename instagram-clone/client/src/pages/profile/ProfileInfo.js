@@ -1,6 +1,9 @@
+// profile 컴포넌트에서 이미 여기에 데이터 전달한 상태, 여기선 전달받은 데이터를 화면에 표현하는 것
+
 import { Link } from "react-router-dom"
 
 export default function ProfileInfo({
+    // props들 (함수 블록 안에 작성하면 안됌, 파라미터 안에 작성해야 함)
     username,
     avatarUrl,
     name,
@@ -52,6 +55,7 @@ export default function ProfileInfo({
     )
 
     // 게시물갯수, 팔로워 및 팔로잉 수 표시 부분
+    // {followerCount} , {followingCount}는 링크이기도 함, 클릭하면 팔로워, 팔로잉 리스트 페이지로 넘어감
     const countAboutProfile = (
         <ul className="flex itmes-center">
             <li className="w-1/3">
@@ -68,7 +72,7 @@ export default function ProfileInfo({
                     팔로워
                     {" "}
                     <span className="font-semibold">
-                        {followerCount}
+                        {followerCount} 
                     </span>
                 </Link>
             </li>
@@ -109,7 +113,8 @@ export default function ProfileInfo({
                         )}
 
                         {/* 팔로우/언팔로우 버튼 */}
-                        {(!isMaster && !isFollowing) && followButton}
+                        {/* !isMaster가 true일 경우(isMaster가 아닐경우)에 folloButton과 unfollow버튼이 나옴, 본인 프로필이 아닌경우 나옴, isFollowing > 로그인 유저가 해당 유저를 팔로우했다면 true, 아니면 false(서버에서 처리했던거 기억나시죠 라고 쌤이 말함)*/}
+                        {(!isMaster && !isFollowing) && followButton} 
                         {(!isMaster && !isFollowing) && unfollowButton}
                     </div>
 
@@ -128,7 +133,7 @@ export default function ProfileInfo({
             {/* 자기소개 */}
             {bio && (
                 <p className="text-sm font-semibold my-2 whitespace-pre-line">
-                    {bio}
+                  {bio}
                 </p>
             )}
         </div>

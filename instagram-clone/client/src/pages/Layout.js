@@ -1,10 +1,15 @@
+// Layout의 역할은 네비게이션 렌더링이라고 보면 됌 (상단바)
+
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom"; // Outlet는 app.js에서 라우팅 구조 안에서 Layout라우트의 자식라우트 엘리먼트가 렌더링 되는 것, Layout라우트는 트리구조이고, Layout라우트들의 자식라우트엘리먼트가 여기 71번째 줄 <Outlet /> 부분에 렌더링 된다
+// 페이지 이동을 했을때 Layout(상단바)은 고정되어있고 Outlet부분만 바뀐다고 보면 됌
 import AuthContext from "../auth/AuthContext";
 
 export default function Layout() {
     const { user } = useContext(AuthContext);
 
+    // 20번째 줄의 images불러오는 주소, 경로는 어딜까? client의 public(파일을 저장하는 경로)
+    // 63번째의 avatarUrl은 로컬스토리지에 저장되어있다
     return (
         <div className="max-w-sm mx-auto pt-10">
 
@@ -64,6 +69,9 @@ export default function Layout() {
                     </ul>
                 </div>
             </nav>
+
+            {/* 내용 */}
+            <Outlet />
         </div>
     )
 };

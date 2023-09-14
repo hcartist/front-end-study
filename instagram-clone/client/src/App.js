@@ -1,5 +1,4 @@
 // 메인 컴포넌트. 여기서 컴포넌트들이 합성되서 html주입되는 구조
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AuthProvider from './auth/AuthProvider';
 import AuthRequired from "./auth/AuthRequired";
@@ -57,9 +56,8 @@ export default function App() {
             </Route>
             <Route path="accounts/edit" element={<ProfileEdit />} />
           </Route>
-          
           <Route path="accounts/login" element={<Login />} />
-          <Route path="account/signup" element={<SignUp />} />
+          <Route path="accounts/signup" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthProvider>

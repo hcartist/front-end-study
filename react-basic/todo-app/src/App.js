@@ -33,7 +33,7 @@ export default function App() {
 
 
   // 할일을 추가하는 함수
-  function addTask(name) {
+  function addTask(name) { // name은 Form 컴포넌트에서 useState로 선언된 name이 전송된 것
   console.log(name);
 
   // 새로운 할일 객체 생성
@@ -102,7 +102,7 @@ export default function App() {
   const filterButtons = FILTER_NAMES.map(name => (
     <FilterButton
       key={name}
-      name={name}
+      name={name} // props 'name' 처음 선언(addTask의 name하고는 다름 )
       isPressed={filter === name} // 필터와 name을 비교
       setFilter={setFilter}
     />

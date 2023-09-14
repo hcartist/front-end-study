@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
 export default function Thumbnail({
+  // Profile컴포넌트의 props에서 전달받는 props, profile에서 재사용되는 컴포넌트
     id,
     thumbnailUrl,
     likesCount,
