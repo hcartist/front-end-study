@@ -253,18 +253,18 @@ export async function getProfiles(username) { // 검색때 사용할 예정, use
 
 // 4 프로필 상세보기 요청 
 export async function getProfile(username) {
-    const res = await fetch(`${server}/profiles/${username}`, { // username 파라미터
-        headers: {
-            "Authorization": getBearerToken()
-        }
+    const res = await fetch(`${server}/profiles/${username}`, {
+      headers: { 
+        'Authorization': getBearerToken() 
+      }
     })
-
+  
     if (!res.ok) {
-        throw new Error(`${res.status} ${res.statusText}`);
+      throw new Error(`${res.status} ${res.statusText}`);
     }
-
+  
     return await res.json();
-}
+  }
 
 // 5 타임라인 가져오기 요청
 export async function getTimeline(username) {

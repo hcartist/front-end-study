@@ -9,10 +9,20 @@ export default function Comment({
     displayDate,
     handleDelete
 }) {
+    // 더보기 모달 관리
     const [modalOpen, setModalOpen] = useState(false);
 
     // 삭제 버튼 클릭 처리
-    async function handleDeleteClick() { }
+    async function handleDeleteClick() {
+        try {
+            await handleDelete(id);
+
+            // 댓글 삭제 후 모달 창 닫기
+            setModalOpen(false);
+        } catch(error) {
+            alert(error)
+        }
+     }
 
     // 모달 닫기
     function handleOverlay(e) {

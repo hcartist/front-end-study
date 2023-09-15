@@ -37,12 +37,12 @@ export default function ProfileInfo({
     // 팔로우 버튼
     const followButton = (
         <button
-            className="ml-2 bg-blue-500 text-white text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-            onClick={handleFollow}
+          className="ml-2 bg-blue-500 text-white text-sm px-4 py-2 font-semibold p-2 rounded-lg"
+          onClick={handleFollow}
         >
-            팔로우
+          Follow
         </button>
-    )
+      )
 
     // 언팔로우 버튼
     const unfollowButton = (
@@ -114,8 +114,8 @@ export default function ProfileInfo({
 
                         {/* 팔로우/언팔로우 버튼 */}
                         {/* !isMaster가 true일 경우(isMaster가 아닐경우)에 folloButton과 unfollow버튼이 나옴, 본인 프로필이 아닌경우 나옴, isFollowing > 로그인 유저가 해당 유저를 팔로우했다면 true, 아니면 false(서버에서 처리했던거 기억나시죠 라고 쌤이 말함)*/}
-                        {(!isMaster && !isFollowing) && followButton} 
-                        {(!isMaster && !isFollowing) && unfollowButton}
+                        {(!isMaster && !isFollowing) && followButton}
+                        {(!isMaster && isFollowing) && unfollowButton}
                     </div>
 
                     {/* 카운팅 정보 */}
