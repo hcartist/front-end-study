@@ -3,7 +3,7 @@
 // 서버 주소
 const server = "http://localhost:3000/api";
 
-// localStrage에 저장된 토큰을 가져오는 함수
+// localStorage에 저장된 토큰을 가져오는 함수
 function getBearerToken() {
     const user = JSON.parse(localStorage.getItem("user"));
     

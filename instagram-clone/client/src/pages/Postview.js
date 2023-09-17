@@ -37,11 +37,11 @@ export default function PostView() {
             // 서버 요청
             await likePost(id)
 
-            // post 업데이트
+            // post 업데이트, post 변수 업데이트
             const updatedPost = {
                 ...post, // 기존의 포스트를 뜻하는 말
                 liked: true,
-                likesCount: post.likesCount + 1
+                likesCount: post.likesCount + 1 // 이 변경 사항을 콘솔에서 확인할 수 있음
             }
 
             setPost(updatedPost)
@@ -54,7 +54,7 @@ export default function PostView() {
     // 좋아요 취소 처리
     async function handleUnlike(id) {
         try {
-            await likePost(id)
+            await unlikePost(id)
 
             const updatedPost = {
                 ...post,
@@ -76,7 +76,7 @@ export default function PostView() {
             await deletePost(id);
 
             // 삭제 후 피드로 이동
-            navigate('/', { replace: true }); // replace: true > 현재 페이지 대체
+            navigate('/', { replace: true }); // replace: true > 현재 페이지 대체, 삭제한 후 삭제 페이지로 계속 있으면 404에러 뜨니까 피드로 이동하게 함
 
         } catch (error) {
             alert(error)

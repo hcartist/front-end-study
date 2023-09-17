@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 
+// Comment > 각각의 댓글
 export default function Comment({
     id,
     username,
@@ -9,7 +10,7 @@ export default function Comment({
     displayDate,
     handleDelete
 }) {
-    // 더보기 모달 관리
+    // 더보기 모달 관리(댓글)
     const [modalOpen, setModalOpen] = useState(false);
 
     // 삭제 버튼 클릭 처리

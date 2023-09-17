@@ -8,7 +8,7 @@ import Spinner from '../shared/Spinner';
 export default function Comments() {
     const { id } = useParams(); // 댓글을 가져올 게시물의 아이디
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false); // 대기상태 관리하는 변수
     const [comments, setComments] = useState([]); // 댓글 목록
 
     // 키 스테이트
@@ -37,9 +37,9 @@ export default function Comments() {
     // 댓글 추가
     async function handleAddComment(content) {
         // 서버 요청 (댓글 생성 요청)
-        const data = await createComment(id, content);
+        const data = await createComment(id, content); // id > 게시물의 아이디, content > 댓글의 내용
 
-        // 댓글 목록 업데이트
+        // 댓글 목록 업데이트, 클라이언트 측에서 댓글 목록 업데이트
         const updatedComments = [data.comment, ...comments];
         setComments(updatedComments);
      }
@@ -55,8 +55,9 @@ export default function Comments() {
         setComments(remainingComments);
     }
 
+     // 댓글 목록
     const commentList = comments.map(comment => (
-        // 댓글 목록
+        // 각각의 댓글, Comment컴포넌트 재사용
         <Comment
             key={comment.id}
             id={comment.id}
@@ -73,8 +74,11 @@ export default function Comments() {
             <h3 className="text-lg font-semibold my-4">댓글</h3>
 
             {/* 댓글 입력창 */}
+            {/* 따로 컴포넌트로 구분해놓음(createComment) > api,js 168번째*/}
             <Form handleAddComment={handleAddComment} />
 
+            {/* 댓글 목록 구조는 Todo 때 할일 목록과 구조가 같음 */}
+            {/* 댓글이 있으면(0보다 크면(참)) 댓글 출력, 없으면(거짓) '댓글이 없습니다' 띄움 */}
             {commentList.length > 0 ? (
                 <ul>
                     {commentList}
@@ -83,8 +87,10 @@ export default function Comments() {
                 <p className="text-center">댓글이 없습니다</p>
             )}
 
+            {/* 대기상태 */}
             {!isLoaded && <Spinner />}
-
+            
+            {/* 에러 */}
             {error && <p className="text-red-500">{error.message}</p>}
         </div>
     )

@@ -17,10 +17,12 @@ export default function PostTemplate({
     handleDelete,
     isMaster
 }) {
+    // 더보기 모달 > 게시물 삭제버튼, 모달 닫기 버튼 있음
     const [modalOpen, setModalOpen] = useState(false);
 
-    function handleOverlay(e) {
-        if (e.target === e.currentTarget) {
+    // 모달 닫기 처리
+    function handleOverlay(e) { 
+        if (e.target === e.currentTarget) { // e.current.target > 모달을 제외한 오버레이 부분
             setModalOpen(false);
         }
     }
@@ -41,10 +43,11 @@ export default function PostTemplate({
                     </button>
                 </li>
                 <li>
+                    {/* 모달 닫기 버튼 */}
                     <button
                         className="w-full px-4 py-2 text-sm font-semibold"
                         onClick={() => setModalOpen(false)}
-                    >
+                    > 
                         닫기
                     </button>
                 </li>
@@ -79,8 +82,8 @@ export default function PostTemplate({
         <div className="mt-4 bg-white">
             {/* 유저 아바타, 더보기 버튼 부분 */}
             <div className="px-2 mb-2 flex justify-between items-center">
-                <Link
-                    to={`/profiles/${username}`}
+                <Link // 유저 아바타 부분
+                    to={`/profiles/${username}`} // 클릭했을때 유저 프로필로 이동한다
                     className="inline-flex items-center"
                 >
                     <img
@@ -94,7 +97,7 @@ export default function PostTemplate({
 
                 {modalOpen && modal}
 
-                {isMaster && (
+                {isMaster && ( // 본인 게시물일 경우(참일 경우) 더보기 버튼이 나옴
                     <svg
                         className="w-1 cursor-pointer"
                         onClick={() => setModalOpen(true)}
@@ -107,14 +110,17 @@ export default function PostTemplate({
             </div>
 
             {/* 캐러셀 */}
-            <Carousel photoUrls={photoUrls} />
+            {/* 컴포넌트를 따로 분리했음 > Carousel.js */}
+            <Carousel photoUrls={photoUrls} /> 
 
             {/* 게시물 정보 */}
             <div className="mt-2 px-2">
                 {/* 좋아요/취소 버튼 */}
                 <div className="flex">
-                    {liked ? unlikeButton : likeButton}
+                    {/* 유저가 좋아하면(참) 좋아요 취소버튼 나타나고 반대면(거짓) 좋아요 버튼 나타남 */}
+                    {liked ? unlikeButton : likeButton} 
 
+                    {/* 댓글 버튼 > 댓글 페이지로 넘어감(링크) */}
                     <Link to={`/p/${id}/comments`} className="ml-2">
                         <svg
                             className="w-6"
@@ -134,6 +140,7 @@ export default function PostTemplate({
                             <Link to={`/profiles/${username}`} className="font-semibold">
                                 {username}
                             </Link>
+                            {/* {''} 인 이유 필수 아니라서. 있으면 넣는다 */}
                             {''}
                             {caption}
                         </p>
@@ -148,7 +155,8 @@ export default function PostTemplate({
                 )}
 
                 {/* 작성일 */}
-                <p className="text-gray-400 text-xs">{displayDate}</p>
+                {/* server model에서 virtual field 만들때 같이 만든 displayDate */}
+                <p className="text-gray-400 text-xs">{displayDate}</p> 
             </div>
         </div>
     )

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { useContext, createContext, useState, useEffect } from "react";
-
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom'
-=======
->>>>>>> eb1fbc80b7a2bca09556473c8957caeaba51c5a9
 
 /*
 리액트 튜토리얼
@@ -58,7 +54,6 @@ export default function App() {
 }
 
 
-<<<<<<< HEAD
 // function Snippet() {
 //   return (
 //     <form>
@@ -167,26 +162,26 @@ export default function App() {
 
 // 리스트렌더링
 
-function Snippet() {
-const beers = [
-{ name: "Heineken", origin: "Netherlands"},
-{ name: "Guinness", origin: "Ireland"},
-{ name: "Asahi", origin: "Japan"}
-]
+// function Snippet() {
+// const beers = [
+// { name: "Heineken", origin: "Netherlands"},
+// { name: "Guinness", origin: "Ireland"},
+// { name: "Asahi", origin: "Japan"}
+// ]
 
-const beerList = beers.map((beer, index) => (
-  <li key={index}>{beer.name}, {beer.origin}</li>
-  ))
+// const beerList = beers.map((beer, index) => (
+//   <li key={index}>{beer.name}, {beer.origin}</li>
+//   ))
 
-  return (
-    <>
-    <h3>세계맥주</h3>
-    <ul>
-      {beerList}
-      </ul>
-      </>
-    )
-}
+//   return (
+//     <>
+//     <h3>세계맥주</h3>
+//     <ul>
+//       {beerList}
+//       </ul>
+//       </>
+//     )
+// }
 
 
 
@@ -347,35 +342,35 @@ props
 컴포넌트에 전달되는 데이터
 */
 
-// function Beer({beer}) {
-//   console.log(beer) // 전달받은 변수에 접근한다
-// return (
+function Beer({beer}) {
+  console.log(beer) // 전달받은 변수에 접근한다
+return (
 
-//   <ul>
-//     <li>이름: {beer.name}</li>
-//     <li>이름: {beer.origin}</li>
-//     <li>이름: {beer.available ? "예" : "아니오"}</li>
-//   </ul>
-//   )
-// }
+  <ul>
+    <li>이름: {beer.name}</li>
+    <li>이름: {beer.origin}</li>
+    <li>이름: {beer.available ? "예" : "아니오"}</li>
+  </ul>
+  )
+}
 
-// function Snippet() {
+function Snippet() {
 
-//   // 지역 변수(선언된 함수 안에서만 접근할 수 있다)
-// const irishBeer = {
-// name: "Guinness",
-// origin: "Ireland",
-// available: false
-// };
+  // 지역 변수(선언된 함수 안에서만 접근할 수 있다)
+const irishBeer = {
+name: "Guinness",
+origin: "Ireland",
+available: false
+};
 
-// return (
-//   <>
-//   <h2>Beer</h2>
-//   {/* Beer컴포넌트에게  irishBeer변수를 전달한다 */}
-//   <Beer beer={irishBeer}/>
-//   </>
-//   )
-// }
+return (
+  <>
+  <h2>Beer</h2>
+  {/* Beer컴포넌트에게  irishBeer변수를 전달한다 */}
+  <Beer beer={irishBeer}/>
+  </>
+  )
+}
 
 
 
@@ -1053,23 +1048,17 @@ useContext Hook(리액트가 제공하는 특별한 함수)
 
 
 
-
-
-
-
-=======
-function Snippet() {
-  return (
-    <form>
-      <h1>Goole</h1>
-      <input
-        type="search"
-        className="class1 class2"
-        style={{ padding: "0.5rem", width: '20rem' }}
-        placeholder="구글 검색"
-        autoComplete="off"
-      />
-    </form>
-  )
-};
->>>>>>> eb1fbc80b7a2bca09556473c8957caeaba51c5a9
+// function Snippet() {
+//   return (
+//     <form>
+//       <h1>Goole</h1>
+//       <input
+//         type="search"
+//         className="class1 class2"
+//         style={{ padding: "0.5rem", width: '20rem' }}
+//         placeholder="구글 검색"
+//         autoComplete="off"
+//       />
+//     </form>
+//   )
+// };
