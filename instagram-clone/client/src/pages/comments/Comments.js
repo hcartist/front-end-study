@@ -49,8 +49,8 @@ export default function Comments() {
         // 서버 요청
         await deleteComment(id);
 
-        // comments 업데이트
-        const remainingComments = comments.filter(comment => comment.id !== id);
+        // comments 변수 업데이트
+        const remainingComments = comments.filter(comment => comment.id !== id); // 기존 comment 목록에서 전달받은 id와 일치하는 댓글만 제외하고 나머지 댓글은 remainingComments에 저장, remainingComments는 setCommnets에 업뎃
 
         setComments(remainingComments);
     }

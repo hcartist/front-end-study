@@ -11,9 +11,10 @@ export default function FollowingList() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [followingUsers, setFollowingUsers] = useState([]);
 
-    // key state
+    // 키 스테이트
     console.log(followingUsers)
 
+    // 서버 요청
     useEffect(() => {
         fetchData()
     }, [])
@@ -32,7 +33,7 @@ export default function FollowingList() {
     }
 
     // 팔로우 처리
-    async function handleFollow(username) {
+    async function handleFollow(username) { // 하위폴더인 FollowingUser.js에 선언되어 있음
         try {
             await follow(username)
 
@@ -52,13 +53,13 @@ export default function FollowingList() {
     }
 
     // 언팔로우 처리
-    async function handleUnfollow(username) {
+    async function handleUnfollow(username) { // 하위폴더인 FollowingUser.js에 선언되어 있음
         try {
             await unfollow(username)
 
             const updatedFollowingUsers = followingUsers.map(followingUser => {
                 if (followingUser.username === username) {
-                    return { ...followingUser, isFollowing: true }
+                    return { ...followingUser, isFollowing: false }
                 }
 
                 return followingUser;
@@ -94,7 +95,7 @@ export default function FollowingList() {
                     {followingList}
                 </ul>
             ) : (
-                <p>0 following</p>
+                <p>팔로잉 유저가 없습니다</p>
             )}
 
             {!isLoaded && <Spinner />}

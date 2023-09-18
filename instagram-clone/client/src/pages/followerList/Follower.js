@@ -14,7 +14,7 @@ export default function Follower({
   const followButton = (
     <button
       className="ml-2 bg-blue-500 text-white text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-      onClick={() => handleFollow(username)}
+      onClick={() => handleFollow(username)} // 상위폴더 FollowerList.js에 선언되어 있음
     >
       팔로우
     </button>
@@ -24,7 +24,7 @@ export default function Follower({
   const unfollowButton = (
     <button
       className="ml-2 bg-gray-200 text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-      onClick={() => handleUnfollow(username)}
+      onClick={() => handleUnfollow(username)} // 상위폴더 FollowerList.js에 선언되어 있음
     >
       팔로잉
     </button>
@@ -49,7 +49,7 @@ export default function Follower({
           </span>
         </div>
       </Link>
-
+      {/* 팔로잉중이 참일경우 팔로우취소버튼, 거짓일 경우 팔로우버튼 */}
       {isFollowing ? unfollowButton : followButton}
     </div>
   )

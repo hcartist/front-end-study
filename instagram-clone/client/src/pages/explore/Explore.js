@@ -7,7 +7,7 @@ import Spinner from "../shared/Spinner";
 export default function Explore() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(true);
-    // 프로필 목록
+    // 프로필 목록, 검색한 프로필
     const [profiles, setProfiles] = useState([]);
 
     // 키 스테이트
@@ -53,7 +53,8 @@ export default function Explore() {
         <h3 className="text-lg font-semibold my-4">검색</h3>
   
         {/* 검색어 입력란 */}
-        <Form search={search} />
+        {/* 따로 컴포넌트로 만들어놓음, Form.js, 저 search Form.js에 파라미터로 받고있음 */}
+        <Form search={search} /> 
         
         <ul>
           {profileList}

@@ -7,6 +7,8 @@ export default function Profile({
   name, 
   isFollowing 
 }) {
+
+  // 각각의 프로필을 나타내는 컴포넌트
   return (
     <li className="flex items-center justify-between my-2">
       <Link
@@ -27,9 +29,10 @@ export default function Profile({
         </div>
       </Link>
 
+      {/* 팔로잉중일 경우 오른쪽에 팔로잉 버튼이 뜬다 */}
       {isFollowing && (
         <div className="ml-2 text-sm text-blue-500 font-semibold">
-          following
+         팔로잉
         </div>
       )}
     </li>

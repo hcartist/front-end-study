@@ -13,7 +13,7 @@ export default function FollowingUser({
     const followButton = (
         <button
             className="ml-2 bg-blue-500 text-white text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-            onChange={() => handleFollow(username)}
+            onChange={() => handleFollow(username)} // 상위폴더인 FollowingList.js에 선언되어 있음
         >
             팔로우
         </button>
@@ -23,7 +23,7 @@ export default function FollowingUser({
     const unfollowButton = (
         <button
             className="ml-2 bg-gray-200 text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-            onChange={() => handleUnfollow(username)}
+            onChange={() => handleUnfollow(username)} // 상위폴더인 FollowingList.js에 선언되어 있음
         >
             팔로잉
         </button>

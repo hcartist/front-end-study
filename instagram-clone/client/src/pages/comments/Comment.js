@@ -14,9 +14,9 @@ export default function Comment({
     const [modalOpen, setModalOpen] = useState(false);
 
     // 삭제 버튼 클릭 처리
-    async function handleDeleteClick() {
+    async function handleDeleteClick() { // 화면상 댓글 삭제 버튼
         try {
-            await handleDelete(id);
+            await handleDelete(id); // Comments.js 48번째 줄
 
             // 댓글 삭제 후 모달 창 닫기
             setModalOpen(false);
