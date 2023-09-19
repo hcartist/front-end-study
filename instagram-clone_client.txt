@@ -1,5 +1,9 @@
 git 연결 (git add./git commit -m "8/31"/git push)
 
+git 리퍼리토리 중복됐을때
+- 폴더에있는 git파일들 지워준다
+- git에 있는 캐쉬도 지워준다(git rm -r --cached ./instagram-clone/client)
+
 
 
 
@@ -26,3 +30,18 @@ src
 - service: 서버 요청 라이브러리
 - utils/validator: 클라이언트측 폼데이터 검사 라이브러리
 
+Outlet 컴포넌트
+Layout 라우트의 자식 라우트의 컴포넌트
+
+FileList타입 -> 더 이상 지원되지 않는다
+Array.from(순회 가능한 객체)으로 배열로 변환 후 사용한다
+
+401- 권한이 없다는 뜻
+404- 서버에서 요청하는 리소스를 클라이언트에서 못받겠다는 뜻
+
+postCount - 4 + 2 = 6
+
+posts.length = 5
+
+더보기 버튼 클릭 =>
+skip = limit + skip = 0 + 5 = 5

@@ -40,7 +40,7 @@ export default function ProfileInfo({
           className="ml-2 bg-blue-500 text-white text-sm px-4 py-2 font-semibold p-2 rounded-lg"
           onClick={handleFollow}
         >
-          Follow
+          팔로우
         </button>
       )
 
