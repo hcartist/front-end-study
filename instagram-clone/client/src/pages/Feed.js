@@ -18,7 +18,7 @@ export default function Feed() {
     console.log(posts);
 
     // 피드 요청
-    useEffect(() => { // 서버 요청 부분(dependencies)에 skip이 있는 이유: skip이 업뎃 되면 서버에 업로드됨
+    useEffect(() => { // 서버 요청 부분(dependencies)에 skip이 있는 이유: 더보기 기능때문에, skip이 업뎃 되면 서버에 게시물을 다시 요청, useEffect에서 dependency(skip)가 있을때 dependency가 업데이트 되면 useEffect를 다시 실행한다
         fetchData()
     }, [skip])
 
@@ -27,13 +27,13 @@ export default function Feed() {
         try {
             setError(null);
             setIsLoaded(false);
-            // 서버 요청 > api에 선언되어 있음, limit과 skip을 서버에 전송하고 있음
+            // 서버 요청 > api에 선언되어 있음, limit과 skip을 서버에 같이 전송하고 있음
             const data = await getFeed(limit, skip);
 
             // posts 업데이트 (더보기 기능)
             // 1 posts - 이전에 요청한 게시물
             // 2 data.posts - 새롭게 요청한 게시물
-            const updatedPosts = [...posts, ...data.posts]; // [...posts, ...data.posts]; > 더보기, 기존 posts에 새롭게 추가된 posts(...data.posts) 추가
+            const updatedPosts = [...posts, ...data.posts]; // 기존(...posts)에 새롭게 추가된 posts(...data.posts > 새롭게 요청한 게시물) 추가
 
             setPosts(updatedPosts);
             setPostCount(data.postCount);
@@ -72,8 +72,10 @@ export default function Feed() {
     // 좋아요 취소
     async function handleUnlike(id) {
         try {
+            // 서버 요청
             await unlikePost(id)
 
+            // post 업데이트
             const updatedPosts = posts.map(post => {
                 if (post.id === id) {
                     return {
@@ -94,8 +96,11 @@ export default function Feed() {
     // 게시물 삭제
     async function handleDelete(id) {
         try {
+            // 서버 요청
             await deletePost(id);
 
+            // post 업데이트
+            // id가 일치하는 post를 제외하고 나머지를 리턴시킨다
             const remainingPosts = posts.filter(post => {
                 if (id !== post.id) {
                     return post;
@@ -111,7 +116,8 @@ export default function Feed() {
 
     // 피드 목록(필요한 목록)
     const postList = posts.map(post => (
-        // PostTemplate 재사용
+        // PostTemplate 재사용, postTemplate은 보여지는 부분. 게시물 상세보기같이 보여지는 부분 담당하는 컴포넌트였음, postView, Feed에서 활용
+        // Feed는 연속적으로 게시물이 보여지는 공간이므로 재사용하고있음(반복문)
         <PostTemplate
             key={post.id}
             id={post.id}
@@ -149,6 +155,7 @@ export default function Feed() {
 
     return (
         <>
+        {/* 게시물이이 1개 이상이면 postList를 출력하고 없으면 'Instagram불러오기' 링크가 뜬다*/}
             {postList.length > 0 ? (
                 <ul>
                     {postList}
@@ -163,7 +170,7 @@ export default function Feed() {
                     </Link>
                 </div>
             )}
-            {/* 더 가져올 게시물이 있을때 더보기 버튼 뜸, 현재는 없음 게시물 5갠데 limit도 5개라서 */}
+            {/* 더 가져올 게시물이 있을때(참) 더보기 버튼 뜸, 현재는 없으면(거짓) 버튼 안뜸 */}
             {doesMoreExists && moreButton}
 
             {!isLoaded && <Spinner />}
