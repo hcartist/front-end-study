@@ -22,11 +22,26 @@ export default function App() {
 
   console.log(data);
 
-const FilterButton = filters.map(filter => (
+const FilterButton = filter.map(filter => (
   <>
   key={filter.id}
   name={filter.name}
   </>
 ))
 
+
+  return (
+    <>
+      <button className="text-white">
+        서울
+      </button>
+      <button className="text-white">
+        인천
+      </button>
+      <button className="text-white">
+        광주
+      </button>
+      <Dashboard />
+    </>
+  )
 };

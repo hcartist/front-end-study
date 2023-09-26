@@ -10,4 +10,5 @@ export async function getPublicData(districtId, year) {
   }
 
   return res.json();
-}
+
+};
