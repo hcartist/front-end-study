@@ -1,9 +1,7 @@
 import { getPublicData } from "./service/api";
 import { useState, useEffect } from "react";
 import Dashboard from "./Components/Dashboard";
-import { Areas } from "./Components/Constants/Areas";
-
-
+import { Areas } from "./Constants/Areas";
 
 export default function App() {
 
@@ -16,8 +14,6 @@ export default function App() {
       {Area.name}
     </option>
   ))
-
-
 
 return (
   <>
@@ -32,8 +28,4 @@ return (
   </>
 )
   
-  
-  
-  
-
 };
