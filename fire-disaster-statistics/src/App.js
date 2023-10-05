@@ -1,14 +1,14 @@
-import { getPublicData } from "./service/api";
 import { useState, useEffect } from "react";
 import Dashboard from "./Components/Dashboard";
 import { Areas } from "./Constants/Areas";
+import { Years } from "./Constants/Years"
 
 
 export default function App() {
 
-  // const [accidents, setAccidents] = useState([]);
-  // const [accidentCount, setAccidentCount] = useState(0);
+  const [year, setYear] = useState("2021")
   const [filter, setFilter] = useState("서울특별시")
+
 
   const areaList = Areas.map(Area => (
     <option key={Area.name} value={Area.name}>
@@ -16,16 +16,26 @@ export default function App() {
     </option>
   ))
 
+  const yearList = Years.map(Year => (
+    <option key={Year.name} value={Year.name}>
+      {Year.name}
+    </option>
+  ))
+
   return (
     <>
       <div>
         <div>
+          <select onChange={({ target }) => setYear(target.value)}
+          >{yearList}</select>
           <select onChange={({ target }) => setFilter(target.value)}
           >{areaList}</select>
         </div>
       </div>
-      <Dashboard filter={filter}>
-      </Dashboard>
+      <Dashboard
+        year={year}
+        filter={filter}
+      />
     </>
   )
 
