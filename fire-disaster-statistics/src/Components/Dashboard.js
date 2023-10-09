@@ -1,16 +1,10 @@
 import { getPublicData } from "../service/api";
-import { getPublicData2017 } from "../service/api";
-import { getPublicData2018 } from "../service/api";
-import { getPublicData2019 } from "../service/api";
-import { getPublicData2020 } from "../service/api";
-import { getPublicData2021 } from "../service/api";
 import { useState, useEffect } from 'react';
 import KakaoMap from './KakaoMap';
 import RechartBar from './RechartBar';
-import RechartPie from './RechartPie';
 
 
-const FILTER_MAP2 = {
+const FILTER_MAP = {
     서울특별시: (item) => item.시도 === "서울특별시",
     경기도: (item) => item.시도 === "경기도",
     경상북도: (item) => item.시도 === "경상북도",
@@ -27,14 +21,11 @@ export default function Dashboard({ year, filter }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [accidents, setAccidents] = useState([])
-    const [accidentCount, setAccidentCount] = useState(0);
 
+    const thisAccidents = accidents.filter(FILTER_MAP[filter]);
 
-    const thisAccidents2 = accidents.filter(FILTER_MAP2[filter]);
+    console.log(thisAccidents);
 
-    console.log(thisAccidents2);
-    console.log(accidentCount);
-    // console.log(count);
 
     async function fetchData() {
         try {
@@ -44,12 +35,6 @@ export default function Dashboard({ year, filter }) {
             const data = await getPublicData(year);
 
             setAccidents(data.data)
-
-            // const count = accidents.totalCount
-
-            // setAccidentCount(count)
-            setAccidentCount(data.totalCount)
-
 
         } catch (error) {
             setError(error)
@@ -62,19 +47,37 @@ export default function Dashboard({ year, filter }) {
         fetchData();
     }, [year])
 
+    if (error) {
+        return <p className="text-white">{error.message}</p>
+    }
 
-    return (
+    if (!isLoaded) {
+        return (
+            <div className="p-8 flex justify-center">
+              <div className="w-12 h-12 border-8 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          )
+    }
+
+
+    return thisAccidents.length > 0 ? (
         <>
-        <div>
-        <KakaoMap accidents={accidents} />
-        </div>
-        <div>
-        {/* <RechartBar accidents={accidents} fill="#0088fe" /> */}
-        </div>
-        <div>
-        <RechartPie accidents={accidents} fill="#0088fe" />
-        </div>
+        <div className="p-[1rem]">
+
+            <div className="w-1/2">
+                <KakaoMap filter={filter} thisAccidents={thisAccidents} />
+            </div>
+
+            <div className="absoulte">
+            <h1 className="text-white mt-[1rem]">{thisAccidents.length}건의 화재사건이 있습니다.</h1>
+
+                <RechartBar thisAccidents={thisAccidents} fill="#0088fe" />
+            </div>
+
+            </div>
         </>
+    ) : (
+        <p className="text-white">0건의 화재사건이 있습니다.</p>
     )
 
 };
